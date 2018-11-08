@@ -1,5 +1,6 @@
 class TeachersController < ApplicationController
   before_action :set_teacher, only: [:show, :update, :edit]
+  skip_before_action :authenticate_user!, only: [:index, :show]
 
   # works
   def new
