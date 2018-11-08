@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_11_07_112957) do
+ActiveRecord::Schema.define(version: 2018_11_08_071530) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -50,7 +50,7 @@ ActiveRecord::Schema.define(version: 2018_11_07_112957) do
     t.integer "average_rating"
     t.integer "hourly_price"
     t.date "available_from"
-    t.date "availble_to"
+    t.date "available_to"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_teachers_on_user_id"
