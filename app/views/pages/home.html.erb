@@ -1,7 +1,45 @@
 <div class="banner" style="background-image: linear-gradient(-225deg, rgba(0,101,168,0.6) 0%, rgba(0,36,61,0.6) 50%), url('https://kitt.lewagon.com/placeholder/cities/berlin');">
   <div class="banner-content">
-    <h1>Le Wagon Berlin</h1>
-    <p>Learn to code with us in Berlin</p>
-    <a class="btn btn-primary btn-lg">Start now</a>
+    <h1>Off The Wagon</h1>
+    <p>Ask a TA what the fuck is happening after Le Wagon is done!</p>
+    <a class="btn btn-primary btn-lg">Search now</a>
+  </div>
+</div>
+
+
+<div class="wrapper">
+  <div class="container">
+    <!-- List showing all teachers -->
+    <h1>Best Teachers</h1>
+    <ul>
+      <div class="row">
+        <% @teachers.each do |teacher| %>
+          <div class="col-xs-4">
+            <li>
+              <%= teacher %>
+            </li>
+          </div>
+      <% end %>
+      </div>
+    </ul>
+    <!-- End of list showing all teachers -->
+
+    <!-- List showing all Skills -->
+    <h1>Most searched for Skills</h1>
+    <ul>
+      <div class="row">
+        <% @skills.each do |skill| %>
+          <div class="col-xs-4">
+            <li>
+              <%= skill %>
+            </li>
+          </div>
+      <% end %>
+      </div>
+    </ul>
+
+    <!-- End of list showing all Skills -->
+
+
   </div>
 </div>
