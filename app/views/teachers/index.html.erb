@@ -12,14 +12,14 @@
             <div class="card-category">Teacher Email: <%= teacher.user.email %></div>
             <div class="card-description">
               <h2>
-                Skills:
-                  <% TeacherSkill.where(teacher_id: teacher.id).each do |teacher_skill| %>
-                    %= teacher_skill.skill.name %>
-                  <% end %>
+                Teacher ID: <%= teacher.id %>
               </h2>
 
               <p>
-                Teacher ID: <%= teacher.id %>
+                Skills:
+                  <% TeacherSkill.where(teacher_id: teacher.id).each do |teacher_skill| %>
+                    <%= teacher_skill.skill.name %>
+                  <% end %>
               </p>
             </div>
             <img class="card-user" src="https://kitt.lewagon.com/placeholder/users/tgenaitay">
