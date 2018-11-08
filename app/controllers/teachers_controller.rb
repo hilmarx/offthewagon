@@ -6,10 +6,12 @@ class TeachersController < ApplicationController
   end
 
   def create
-    teacher = Teacher.new(teacher_params)
-    if teacher.save
-      redirect_to teacher_path(teacher), notice: 'Profile succesfully created'
+    @teacher = Teacher.new(teacher_params)
+    @teacher.user = current_user
+    if @teacher.save
+      redirect_to teacher_path(@teacher), notice: 'Profile succesfully created'
     else
+      puts "This teacher didn't save"
       render :new
     end
   end

@@ -1,1 +1,6 @@
-<h1>This is the teacher _form page</h1>
+<%= simple_form_for(@teacher) do |f| %>
+  <%= f.input :hourly_price, label: 'Hourly price (USD)', placeholder: "25" %>
+  <%= f.input :available_from %>
+  <%= f.input :availble_to %>
+  <%= f.submit %>
+<% end %>
