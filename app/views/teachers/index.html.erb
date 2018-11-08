@@ -1,3 +1,36 @@
-<h1>I'm the teacher#index page</h1>
+<div class="wrapper">
+  <div class="container">
+    <!-- Container Start -->
 
-<h1> <%= @teachers %> </h1>
+    <h1>Select the teacher you would like to book:</h1>
+
+    <!-- Beginning of Teacher Card -->
+    <div class="row">
+      <% @teachers.each do |teacher| %>
+        <div class="col-xs-4">
+          <div class="card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('https://kitt.lewagon.com/placeholder/cities/shanghai');">
+            <div class="card-category">Teacher Email: <%= teacher.user.email %></div>
+            <div class="card-description">
+              <h2>
+                Skills:
+                  <% TeacherSkill.where(teacher_id: teacher.id).each do |teacher_skill| %>
+                    %= teacher_skill.skill.name %>
+                  <% end %>
+              </h2>
+
+              <p>
+                Teacher ID: <%= teacher.id %>
+              </p>
+            </div>
+            <img class="card-user" src="https://kitt.lewagon.com/placeholder/users/tgenaitay">
+            <a class="card-link" href="<%= teacher_path(teacher) %>" ></a>
+          </div>
+        </div>
+      <% end %>
+    </div>
+    <!-- End of Teacher Card -->
+
+<!-- Container end -->
+  </div>
+</div>
+
