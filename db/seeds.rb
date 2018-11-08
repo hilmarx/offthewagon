@@ -58,3 +58,24 @@ puts "Teacher skills generated"
 # end
 
 puts "Finished seeding database"
+
+puts "Create test users"
+j = User.new(email: "j@j.j", password: "jjjjjj")
+j.save!
+
+w = User.new(email: "w@w.w", password: "wwwwww")
+w.save!
+
+o = User.new(email: "o@o.o", password: "oooooo")
+o.save!
+
+h = User.new(email: "h@h.h", password: "hhhhhh")
+h.save!
+
+Teacher.new(user_id: j.id, hourly_price: Faker::Number.number(3), available_from: Date.today, available_to: (Date.today + rand(100))).save!
+
+Teacher.new(user_id: w.id, hourly_price: Faker::Number.number(3), available_from: Date.today, available_to: (Date.today + rand(100))).save!
+
+Teacher.new(user_id: o.id, hourly_price: Faker::Number.number(3), available_from: Date.today, available_to: (Date.today + rand(100))).save!
+
+Teacher.new(user_id: h.id, hourly_price: Faker::Number.number(3), available_from: Date.today, available_to: (Date.today + rand(100))).save!
