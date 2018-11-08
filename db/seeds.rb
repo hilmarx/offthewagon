@@ -1,7 +1,48 @@
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the rails db:seed command (or created alongside the database with db:setup).
-#
-# Examples:
-#
-#   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
-#   Character.create(name: 'Luke', movie: movies.first)
+puts "Deleting all users..."
+User.destroy_all
+
+puts "Deleting all teachers..."
+Teacher.destroy_all
+
+puts "Deleting all bookings..."
+Booking.destroy_all
+
+puts "Deleting teacher skills..."
+TeacherSkill.destroy_all
+
+puts "Deleting skills..."
+Skill.destroy_all
+
+puts "Generating users..."
+
+20.times do
+  User.create!(email: Faker::Internet.email, password: Faker::Internet.password(6))
+end
+
+puts "Users generated"
+puts "Generating skills..."
+
+Skill.create(name: 'ruby')
+Skill.create(name: 'javascript')
+Skill.create(name: 'swift')
+Skill.create(name: 'c')
+Skill.create(name: 'python')
+
+puts "Skills generated"
+puts "Generating teachers..."
+
+20.times do
+  Teacher.create!(hourly_price: Faker::Number.number(3), available_from: Date.today, availble_to: (Date.today + rand(100)), user: User.all.sample)
+end
+
+puts "Teachers generated"
+puts "Generating teacher skills..."
+
+level_array = ['expert', 'beginner', 'intermediate']
+20.times do
+  TeacherSkill.create(name: Skill.all.sample.name, level: level_array.sample, teacher: Teacher.all.sample, skill: Skill.all.sample)
+end
+
+puts "Teacher skills generated"
+
+puts "Finished seeding database"
