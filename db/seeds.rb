@@ -38,7 +38,7 @@ end
 puts "Teachers generated"
 puts "Generating teacher skills..."
 
-level_array = ['expert', 'beginner', 'intermediate']
+level_array = [1, 2, 3, 4, 5]
 20.times do
   TeacherSkill.create(name: Skill.all.sample.name, level: level_array.sample, teacher: Teacher.all.sample, skill: Skill.all.sample)
 end
