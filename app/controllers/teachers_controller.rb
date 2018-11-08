@@ -17,7 +17,7 @@ class TeachersController < ApplicationController
   end
 
   def index
-    @teacher = Teacher.all
+    @teachers = Teacher.all
   end
 
   def show
@@ -26,7 +26,7 @@ class TeachersController < ApplicationController
 
 
   def edit
-    #set_teacher
+    # set_teacher
   end
 
   def update
@@ -47,5 +47,5 @@ end
 
 def teacher_params
   # If any errors are encountered, it might be due to ':id' below
-  params.require(:teacher).permit(:user_id, :average_rating, :hourly_price, :available_from, :availble_to)
+  params.require(:teacher).permit(:user_id, :average_rating, :hourly_price, :available_from, :available_to)
 end
