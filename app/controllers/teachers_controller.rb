@@ -1,16 +1,17 @@
-class TeacherController < ApplicationController
+class TeachersController < ApplicationController
   before_action :set_teacher, only: [:show, :update, :edit]
-  # def profile
-  # end
 
-  def new #done
+  def new
     @teacher = Teacher.new
   end
 
   def create
     teacher = Teacher.new(teacher_params)
-    teacher.save
-    redirect_to teacher_path(teacher)
+    if teacher.save
+      redirect_to teacher_path(teacher), notice: 'Profile succesfully created'
+    else
+      render :new
+    end
   end
 
   def index
@@ -22,12 +23,17 @@ class TeacherController < ApplicationController
   end
 
 
-  def edit #done
+  def edit
     #set_teacher
   end
 
   def update
     # set_teacher
+    if @teacher.update(teacher_params)
+      redirect_to teacher_path(@teacher), notice: 'Profile successfully updated'
+    else
+      render :edit
+    end
   end
 end
 
