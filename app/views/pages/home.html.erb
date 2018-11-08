@@ -16,7 +16,7 @@
         <% @teachers.each do |teacher| %>
           <div class="col-xs-4">
             <li>
-              <%= teacher %>
+              <%=link_to teacher, teacher_path(teacher) %>
             </li>
           </div>
       <% end %>
