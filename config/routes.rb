@@ -13,7 +13,7 @@ Rails.application.routes.draw do
     # As a teacher, I want to see all my bookings, edit their status and delete them
     resources 'bookings', only:[:destroy]
     # As a teacher, I want to show all my skills, add new skills and delete skills I no longer possess
-    resources 'teacher_skills', only:[:index, :new, :create, :delete]
+    resources 'teacher_skills', only:[:index, :new, :create, :destroy]
   end
 
 end
