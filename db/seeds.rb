@@ -32,7 +32,7 @@ puts "Skills generated"
 puts "Generating teachers..."
 
 20.times do
-  Teacher.create!(hourly_price: Faker::Number.number(3), available_from: Date.today, availble_to: (Date.today + rand(100)), user: User.all.sample)
+  Teacher.create!(hourly_price: Faker::Number.number(3), available_from: Date.today, available_to: (Date.today + rand(100)), user: User.all.sample)
 end
 
 puts "Teachers generated"
