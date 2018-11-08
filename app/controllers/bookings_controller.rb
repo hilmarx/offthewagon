@@ -4,7 +4,7 @@ class BookingsController < ApplicationController
     if current_user.bookings
       @teacher = Teacher.find_by(user_id: current_user.id)
       @user_bookings = current_user.bookings
-      @teacher_bookings = @teacher.bookings
+      @teacher_bookings = Booking.where(teacher_id: @teacher.id)
     else
       puts "no bookings"
     end

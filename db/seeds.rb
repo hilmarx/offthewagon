@@ -79,3 +79,21 @@ Teacher.new(user_id: w.id, hourly_price: Faker::Number.number(3), available_from
 Teacher.new(user_id: o.id, hourly_price: Faker::Number.number(3), available_from: Date.today, available_to: (Date.today + rand(100))).save!
 
 Teacher.new(user_id: h.id, hourly_price: Faker::Number.number(3), available_from: Date.today, available_to: (Date.today + rand(100))).save!
+
+puts "Create Bookings for test users"
+
+Booking.new(user_id: j.id, teacher_id: w.id, status: "pending").save!
+Booking.new(user_id: j.id, teacher_id: o.id, status: "pending").save!
+Booking.new(user_id: j.id, teacher_id: h.id, status: "pending").save!
+
+Booking.new(user_id: w.id, teacher_id: j.id, status: "pending").save!
+Booking.new(user_id: w.id, teacher_id: o.id, status: "pending").save!
+Booking.new(user_id: w.id, teacher_id: h.id, status: "pending").save!
+
+Booking.new(user_id: o.id, teacher_id: j.id, status: "pending").save!
+Booking.new(user_id: o.id, teacher_id: w.id, status: "pending").save!
+Booking.new(user_id: o.id, teacher_id: h.id, status: "pending").save!
+
+Booking.new(user_id: h.id, teacher_id: j.id, status: "pending").save!
+Booking.new(user_id: h.id, teacher_id: o.id, status: "pending").save!
+Booking.new(user_id: h.id, teacher_id: w.id, status: "pending").save!
