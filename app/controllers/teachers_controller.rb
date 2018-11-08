@@ -47,5 +47,5 @@ end
 
 def teacher_params
   # If any errors are encountered, it might be due to ':id' below
-  params.require(:teacher).permit(:id, :average_rating, :hourly_price, :available_from, :availble_to)
+  params.require(:teacher).permit(:user_id, :average_rating, :hourly_price, :available_from, :availble_to)
 end
