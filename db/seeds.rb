@@ -15,9 +15,11 @@ Skill.destroy_all
 
 puts "Generating users..."
 
+user_array = []
 20.times do
-  User.create!(email: Faker::Internet.email, password: Faker::Internet.password(6))
+  user_array << User.create!(email: Faker::Internet.email, password: Faker::Internet.password(6))
 end
+p user_array
 
 puts "Users generated"
 puts "Generating skills..."
@@ -31,8 +33,9 @@ Skill.create(name: 'python')
 puts "Skills generated"
 puts "Generating teachers..."
 
-20.times do
-  Teacher.create!(hourly_price: Faker::Number.number(3), available_from: Date.today, available_to: (Date.today + rand(100)))
+20.times do |n|
+  user = User.find(n + 1)
+  Teacher.create!(hourly_price: Faker::Number.number(3), available_from: Date.today, available_to: (Date.today + rand(100)), user: user)
 end
 
 puts "Teachers generated"
