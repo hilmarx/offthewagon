@@ -1,8 +1,7 @@
 class BookingsController < ApplicationController
 
-
   def show
-    @bookings = Booking.all
+    @bookings = Booking.find(params[:id])
   end
 
   def create
@@ -13,6 +12,7 @@ class BookingsController < ApplicationController
       redirect_to bookings_show_path
     else
       render :new
+    end
   end
 
   def new
@@ -26,3 +26,4 @@ class BookingsController < ApplicationController
     params.require(:booking).permit(:start_time, :end_time, :status)
   end
 end
+
