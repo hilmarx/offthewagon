@@ -1,2 +1,18 @@
-<h1>Bookings#index</h1>
-<p>Find me in app/views/bookings/index.html.erb</p>
+<!-- Display all the users bookings -->
+
+<h1>USER BOOKINGS</h1>
+
+  <% @user_bookings.each do |booking| %>
+  <p><%= booking.teacher.hourly_price %></p>
+  <p> <%= booking.start_time %></p>
+  <p> <%= booking.end_time %></p>
+  <% end %>
+
+
+
+
+<h1>TEACHER BOOKINGS</h1>
+ <%= @teacher_bookings.each do |booking|%>
+ <%= booking.start_time %>
+ <%= booking.end_time %>
+ <% end %>

@@ -7,14 +7,13 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 
-User.create(email: "012@yahoo.com")
-User.create(email: "345@yahoo.com")
-User.create(email: "678@yahoo.com")
+# User.create(email: "012@yahoo.com")
+# User.create(email: "345@yahoo.com")
+# User.create(email: "678@yahoo.com")
 
 
 
-Teacher.create(skills: "ruby")
-Teacher.create(skills: "python")
+Teacher.create(user_id: 1, hourly_price: 60)
 
 Booking.create(teacher_id: 1, user_id: 1, start_time: "10", end_time: "11", total_price: "60", status: "pending")
 Booking.create(teacher_id: 2, user_id: 2, start_time: "3", end_time: "6", total_price: "120", status: "complete")
