@@ -1,4 +1,10 @@
 Rails.application.routes.draw do
+  get 'teacher_skills/index'
+  get 'teacher_skills/show'
+  get 'teacher_skills/edit'
+  get 'teacher_skills/update'
+  get 'teacher_skills/new'
+  get 'teacher_skills/create'
   devise_for :users
   # Home page should be pages#home
   root to: 'pages#home'
@@ -10,7 +16,7 @@ Rails.application.routes.draw do
     # As a teacher, I want to see all my bookings, edit their status and delete them
     resources 'bookings', only:[:index, :show, :new, :create, :edit, :update, :delete]
     # As a teacher, I want to show all my skills, add new skills and delete skills I no longer possess
-    resources 'teacher_skills', only:[:index, :new, :create, :delete]
+    resources 'teacher_skills', only:[:index, :new, :create, :destroy]
   end
 
 end
