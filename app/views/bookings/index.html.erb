@@ -1,24 +1,27 @@
 <!-- Display all the users bookings -->
 
-<h1>USER BOOKINGS</h1>
+
+<h1>ME BOOKING A TEACHER</h1>
 
   <% @user_bookings.each do |booking| %>
-  <p>
-    Price: <%= booking.teacher.hourly_price %>
-
-  </p>
-<!--   <p> <%= booking.start_time %></p>
-  <p> <%= booking.end_time %></p> -->
+  <p> Price: <%= booking.teacher.hourly_price %></p>
+<p> Start Time: <%= booking.start_time %></p>
+  <p> End Time: <%= booking.end_time %></p>
   <% end %>
 
 
 
+<% if @teacher_bookings %>
+  <h1>STUDENTS BOOKING ME</h1>
+   <%= @teacher_bookings.each do |booking|%>
+   <p> Start Time: <%= booking.start_time %></p>
+   <p> End Time: <%= booking.end_time %> </p>
+   <p> User: <%= booking.user_id %></p>
+   <p> Price: <%= booking.total_price %>
+   <% end %>
+<% end %>
 
-<h1>TEACHER BOOKINGS</h1>
- <% @teacher_bookings.each do |booking|%>
- <p>
-   Status: <%= booking.status %>
- </p>
- <%= booking.start_time %>
- <%= booking.end_time %>
- <% end %>
+
+   <%= link_to "All Teachers", teachers_path %>
+   /
+   <%= link_to "home", root_path %>
