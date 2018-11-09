@@ -1,9 +1,8 @@
 .card {
   height: 175px;
   text-shadow: 0 1px 3px rgba(0,0,0,0.6);
-  background-size: cover !important;
+  background-size: contain !important;
   background-position: center;
-  // color: white;
   position: relative;
   margin: 5px 0 5px 0;
   box-shadow: 2px 2px 2px black;
@@ -11,23 +10,26 @@
 }
 
 .ruby {
-  background-color: #F8FFE5;
+  // background-image: url('../../images/ruby.png');
+  // background-color: #F8FFE5;
 }
 
 .swift {
-  background-color: #06D6A0;
+  // background-color: #06D6A0;
+  // background-image: url('../../images/swift.jpg');
 }
 
 .c {
-  background-color: #1B9AAA;
+  // background-color: #1B9AAA;
 }
 
 .javascript {
-  background-color: #EF476F;
+  // background-color: #EF476F;
+ // background-image: url('../../images/javascript.png');
 }
 
 .python {
-  background-color: #FFC43D;
+  // background-color: #FFC43D;
 }
 
 .no_skill {

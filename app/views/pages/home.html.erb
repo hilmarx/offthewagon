@@ -23,6 +23,7 @@
       <div class="col-xs-4">
         <% skills = TeacherSkill.where(teacher_id: teacher.id) %>
         <% top_skill = skills.order('level DESC').first.try(:name) %>
+
         <% if top_skill != "" %><div class="card <%= top_skill %>">
           <% else %><div class="card no_skill"><% end %>
 
