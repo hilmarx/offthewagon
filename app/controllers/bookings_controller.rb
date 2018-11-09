@@ -3,7 +3,7 @@ class BookingsController < ApplicationController
   def index
     @teacher = current_user.teacher
     @user_bookings = current_user.bookings
-    @teacher_bookings = @teacher.bookings
+   @teacher_bookings = @teacher.bookings
   end
 
   def show
