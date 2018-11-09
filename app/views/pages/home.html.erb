@@ -9,20 +9,29 @@
 
 <div class="wrapper">
   <div class="container">
-    <!-- List showing all teachers -->
     <h1>Best Teachers</h1>
-    <ul>
-      <div class="row">
-        <% @teachers.each do |teacher| %>
-          <div class="col-xs-4">
-            <li>
-              <%=link_to teacher, teacher_path(teacher) %>
-            </li>
+    <!-- List showing all teachers -->
+    <div class="row">
+      <% @teachers.each do |teacher| %>
+        <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
+          <div class="card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('https://kitt.lewagon.com/placeholder/cities/shanghai');">
+            <div class="skills"><% TeacherSkill.where(teacher_id: teacher.id).each do |teacher_skill| %>
+                <%= teacher_skill.skill.name %>
+              <% end %>
+            </div>
+
+            <div class="card-description">
+              <h2>
+                Teacher Name
+              </h2>
+
+            </div>
+            <img class="avatar" src="https://kitt.lewagon.com/placeholder/users/tgenaitay">
+            <a class="card-link" href="<%= teacher_path(teacher) %>" ></a>
           </div>
+        </div>
       <% end %>
-      </div>
-    </ul>
-    <!-- End of list showing all teachers -->
+    </div>
 
     <!-- List showing all Skills -->
     <h1>Most searched for Skills</h1>

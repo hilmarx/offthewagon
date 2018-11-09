@@ -16,14 +16,14 @@ Skill.destroy_all
 
 puts "Generating users..."
 
-user_array = []
+# user_array = []
 20.times do
-  
+
   user = User.new(email: Faker::Internet.email, password: Faker::Internet.password(6))
   user.save!
  #Jethro Code
  #user_array << User.create!(email: Faker::Internet.email, password: Faker::Internet.password(6))
-#end
+end
 #p user_array
 
 puts "Users generated"
@@ -44,7 +44,7 @@ counter = User.first.id
   teach = Teacher.new(user_id: counter, hourly_price: Faker::Number.number(3), available_from: Date.today, available_to: (Date.today + rand(100)))
   teach.save!
   counter += 1
-  
+
 #Jethro Code
 #20.times do |n|
   #user = User.find(n + 1)
