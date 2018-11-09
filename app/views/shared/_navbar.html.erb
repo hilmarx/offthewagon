@@ -1,3 +1,5 @@
+<!-- Start of the Navbar -->
+
 <div class="navbar-wagon">
   <!-- Logo -->
   <a href="/" class="navbar-wagon-brand">
@@ -6,10 +8,76 @@
 
   <!-- Right Navigation -->
   <div class="navbar-wagon-right hidden-xs ">
+  <!-- Displayed when user is  logged in -->
+    <% if user_signed_in? %>
 
-<!--     <a href="" class="navbar-wagon-item navbar-wagon-link">Host</a>
-    <a href="" class="navbar-wagon-item navbar-wagon-link">Trips</a>
-    <a href="" class="navbar-wagon-item navbar-wagon-link">Messages</a> -->
+      <!-- If User is not a teacher, show "Become a teacher" -->
+      <%= link_to "Become a teacher", new_teacher_path, class: "navbar-wagon-item navbar-wagon-link" if current_user.teacher.nil? %>
+
+      <!-- Check Bookings -->
+      <%= link_to "My Bookings", bookings_path, class: "navbar-wagon-item navbar-wagon-link" %>
+
+      <!-- Avatar with the remainding Links as dropdown list -->
+      <div class="navbar-wagon-item">
+        <div class="dropdown">
+          <img src="https://kitt.lewagon.com/placeholder/users/ssaunier" class="avatar dropdown-toggle" id="navbar-wagon-menu" data-toggle="dropdown">
+          <ul class="dropdown-menu dropdown-menu-right navbar-wagon-dropdown-menu">
+            <!-- Show user Profile -->
+            <!-- We don't have a route to simply display a users profile -->
+            <li>
+              <%= link_to "Edit User Profile", edit_user_registration_path %>
+            </li>
+
+            <!-- Show Teacher profile if it exists -->
+            <% if current_user.teacher %>
+              <li>
+
+                <%= link_to "Teacher Profile", teacher_path(current_user.teacher), class: "navbar-wagon-item navbar-wagon-link" %>
+              </li>
+            <% end %>
+
+            <!-- Sign Out -->
+            <li>
+              <%= link_to "Log Out", destroy_user_session_path, method: :delete,  class: "navbar-wagon-item navbar-wagon-link" %>
+            </li>
+
+          </ul>
+        </div>
+      </div>
+
+
+
+
+
+
+  <!-- Displayed when user is NOT logged in -->
+    <% else %>
+      <!--     <a href="#" class="navbar-wagon-item navbar-wagon-link">Sign up</a> -->
+      <%= link_to "Sign up",  new_user_registration_path, class: "navbar-wagon-item navbar-wagon-link" %>
+
+      <!--     <a href="#" class="navbar-wagon-item navbar-wagon-link">Sign in</a> -->
+      <%= link_to "Sign in", new_user_session_path, class: "navbar-wagon-item navbar-wagon-link" %>
+
+    <% end %>
+
+
+  </div>
+
+
+  <!-- Dropdown appearing on mobile only -->
+  <div class="navbar-wagon-item hidden-sm hidden-md hidden-lg">
+    <div class="dropdown">
+      <i class="fas fa-bars dropdown-toggle" data-toggle="dropdown" role="button"></i>
+      <ul class="dropdown-menu dropdown-menu-right navbar-wagon-dropdown-menu">
+        <li><a href="#">Sign up</a></li>
+        <li><a href="#">Sign in</a></li>
+      </ul>
+    </div>
+  </div>
+
+</div>
+
+
 
     <!-- Profile picture with dropdown list -->
 <!--     <div class="navbar-wagon-item">
@@ -23,22 +91,4 @@
       </div>
     </div> -->
 
-<!--     <a href="#" class="navbar-wagon-item navbar-wagon-link">Sign up</a> -->
-    <%= link_to "Sign up",  new_user_registration_path, class: "navbar-wagon-item navbar-wagon-link" %>
-<!--     <a href="#" class="navbar-wagon-item navbar-wagon-link">Sign in</a> -->
-    <%= link_to "Sign in", new_user_session_path, class: "navbar-wagon-item navbar-wagon-link" %>
 
-    <%= link_to "Sign Out", destroy_user_session_path, method: :delete,  class: "navbar-wagon-item navbar-wagon-link" %>
-  </div>
-
-  <!-- Dropdown appearing on mobile only -->
-  <div class="navbar-wagon-item hidden-sm hidden-md hidden-lg">
-    <div class="dropdown">
-      <i class="fas fa-bars dropdown-toggle" data-toggle="dropdown" role="button"></i>
-      <ul class="dropdown-menu dropdown-menu-right navbar-wagon-dropdown-menu">
-        <li><a href="#">Sign up</a></li>
-        <li><a href="#">Sign in</a></li>
-      </ul>
-    </div>
-  </div>
-</div>
