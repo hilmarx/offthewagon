@@ -30,6 +30,14 @@
         <% ruby_teacher_skills.each do |teacher_skill| %>
           <% @selected_teachers << Teacher.find(teacher_skill.teacher_id) %>
         <% end %>
+
+      <% when "all" %>
+        <% ruby_teacher_skills = @teacher_skills %>
+        <% ruby_teacher_skills.each do |teacher_skill| %>
+          <% @selected_teachers << Teacher.find(teacher_skill.teacher_id) %>
+        <% end %>
+
+
       <% end %>
 
 
