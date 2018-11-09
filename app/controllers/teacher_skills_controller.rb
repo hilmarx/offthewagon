@@ -2,7 +2,6 @@
 
 class TeacherSkillsController < ApplicationController
   before_action :set_teacher_skill, only: [:show, :edit, :update, :destroy]
-
   # def index
   #   @teacher_skills = TeacherSkill.all
   # end

@@ -1,10 +1,13 @@
 class TeachersController < ApplicationController
   before_action :set_teacher, only: [:show, :update, :edit]
+  skip_before_action :authenticate_user!, only: [:index, :show]
 
+  # works
   def new
     @teacher = Teacher.new
   end
 
+  # works
   def create
     @teacher = Teacher.new(teacher_params)
     @teacher.user = current_user
@@ -16,19 +19,23 @@ class TeachersController < ApplicationController
     end
   end
 
+  # works
   def index
     @teachers = Teacher.all
   end
 
+  # works
   def show
     # set_teacher
+    @teacher_skills = TeacherSkill.where(teacher_id: @teacher.id)
   end
 
-
+  # works
   def edit
     # set_teacher
   end
 
+  # works
   def update
     # set_teacher
     if @teacher.update(teacher_params)

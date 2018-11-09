@@ -1,5 +1,10 @@
 <h1>I'm the teacher#show page</h1>
 
 <p>Username: <%= @teacher.user.email %></p>
+<p>Id <%= @teacher.id %></p>
+<h3>Skills: <% @teacher_skills.each do |skill| %></h3>
+  <p> <%= skill %></p>
+<% end %>
 
 <p><%= link_to 'Edit teacher details', edit_teacher_path %></p>
+<p><%= link_to 'Go Back to home page', root_path %> </p>
