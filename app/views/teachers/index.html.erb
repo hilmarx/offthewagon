@@ -8,64 +8,65 @@
     <div class="row">
       <% case params[:query] %>
       <% when "ruby" %>
-        <% ruby_teacher_skills = @teacher_skills.where(name: "ruby") %>
-        <% ruby_teacher_skills.each do |teacher_skill| %>
-          <% @selected_teachers << Teacher.find(teacher_skill.teacher_id) %>
-        <% end %>
+      <% ruby_teacher_skills = @teacher_skills.where(name: "ruby") %>
+      <% ruby_teacher_skills.each do |teacher_skill| %>
+      <% @selected_teachers << Teacher.find(teacher_skill.teacher_id) %>
+      <% end %>
 
       <% when "c" %>
-        <% ruby_teacher_skills = @teacher_skills.where(name: "c") %>
-        <% ruby_teacher_skills.each do |teacher_skill| %>
-          <% @selected_teachers << Teacher.find(teacher_skill.teacher_id) %>
-        <% end %>
+      <% ruby_teacher_skills = @teacher_skills.where(name: "c") %>
+      <% ruby_teacher_skills.each do |teacher_skill| %>
+      <% @selected_teachers << Teacher.find(teacher_skill.teacher_id) %>
+      <% end %>
 
       <% when "python" %>
-        <% ruby_teacher_skills = @teacher_skills.where(name: "python") %>
-        <% ruby_teacher_skills.each do |teacher_skill| %>
-          <% @selected_teachers << Teacher.find(teacher_skill.teacher_id) %>
-        <% end %>
+      <% ruby_teacher_skills = @teacher_skills.where(name: "python") %>
+      <% ruby_teacher_skills.each do |teacher_skill| %>
+      <% @selected_teachers << Teacher.find(teacher_skill.teacher_id) %>
+      <% end %>
 
       <% when "javascript" %>
-        <% ruby_teacher_skills = @teacher_skills.where(name: "javascript") %>
-        <% ruby_teacher_skills.each do |teacher_skill| %>
-          <% @selected_teachers << Teacher.find(teacher_skill.teacher_id) %>
-        <% end %>
+      <% ruby_teacher_skills = @teacher_skills.where(name: "javascript") %>
+      <% ruby_teacher_skills.each do |teacher_skill| %>
+      <% @selected_teachers << Teacher.find(teacher_skill.teacher_id) %>
+      <% end %>
 
       <% when "all" %>
-        <% ruby_teacher_skills = @teacher_skills %>
-        <% ruby_teacher_skills.each do |teacher_skill| %>
-          <% @selected_teachers << Teacher.find(teacher_skill.teacher_id) %>
-        <% end %>
+      <% ruby_teacher_skills = @teacher_skills %>
+      <% ruby_teacher_skills.each do |teacher_skill| %>
+      <% @selected_teachers << Teacher.find(teacher_skill.teacher_id) %>
+      <% end %>
 
 
       <% end %>
 
 
-        <% @selected_teachers.each do |teacher| %>
-          <div class="col-xs-4">
-            <% skills = TeacherSkill.where(teacher_id: teacher.id) %>
-            <% top_skill = skills.order('level DESC').first.try(:name) %>
+      <% @selected_teachers.each do |teacher| %>
+      <div class="col-xs-4">
+        <% skills = TeacherSkill.where(teacher_id: teacher.id) %>
+        <% top_skill = skills.order('level DESC').first.try(:name) %>
 
-            <% if top_skill != "" %><div class="card <%= top_skill %>">
-            <% else %><div class="card no_skill"><% end %>
+        <% if top_skill != "" %><div class="card <%= top_skill %>">
+          <% else %><div class="card no_skill"><% end %>
 
-              <div class="skills">
-               <%= top_skill %>
-              </div>
-              <div class="card-description">
-                <h2>
-                  <%= ['Innou Ridder', 'Ridder Inou', 'Ridder Rinou', 'Uonni Reddir'].sample %>
-                </h2>
-              </div>
-              <img class="avatar" src="https://avatars2.githubusercontent.com/u/22443485?s=460&v=4">
-              <a class="card-link" href="<%= teacher_path(teacher) %>" ></a>
-            </div>
+            <div class="skills">
+             <%= top_skill %>
+           </div>
+
+           <div class="card-description">
+            <h2>
+              <%= ['Innou Ridder', 'Ridder Inou', 'Ridder Rinou', 'Uonni Reddir'].sample %>
+            </h2>
           </div>
-          <% end %>
+          <img class="avatar" src="https://avatars2.githubusercontent.com/u/22443485?s=460&v=4">
+          <a class="card-link" href="<%= teacher_path(teacher) %>" ></a>
         </div>
+      </div>
+      <% end %>
+    </div>
     <!-- End of Teacher Card -->
 
 
-      <!-- Container end -->
-    </div>
+    <!-- Container end -->
   </div>
+</div>
