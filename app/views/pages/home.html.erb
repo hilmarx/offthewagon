@@ -9,20 +9,42 @@
 
 <div class="wrapper">
   <div class="container">
-    <!-- List showing all teachers -->
     <h1>Best Teachers</h1>
-    <ul>
-      <div class="row">
-        <% @teachers.each do |teacher| %>
-          <div class="col-xs-4">
-            <li>
-              <%=link_to teacher, teacher_path(teacher) %>
-            </li>
+    <!-- List showing all teachers -->
+    <div class="row">
+      <% @teachers.each do |teacher| %>
+      <div class="col-xs-4">
+        <% skills = TeacherSkill.where(teacher_id: teacher.id) %>
+        <% top_skill = skills.order('level DESC').first.try(:name) %>
+        <% if top_skill == 'ruby' %>
+          <div class="card ruby">
+        <% elsif top_skill == 'swift' %>
+          <div class="card swift">
+        <% elsif top_skill == 'c' %>
+          <div class="card c">
+        <% elsif top_skill == 'javascript' %>
+          <div class="card javascript">
+        <% elsif top_skill == 'python' %>
+          <div class="card python">
+        <% else %>
+          <div class="card no_skill">
+        <% end %>
+            <div class="skills">
+
+              <%= top_skill %>
+
+            </div>
+            <div class="card-description">
+              <h2>
+                Teacher Name
+              </h2>
+            </div>
+            <img class="avatar" src="https://kitt.lewagon.com/placeholder/users/tgenaitay">
+            <a class="card-link" href="<%= teacher_path(teacher) %>" ></a>
           </div>
-      <% end %>
+        </div>
+        <% end %>
       </div>
-    </ul>
-    <!-- End of list showing all teachers -->
 
     <!-- List showing all Skills -->
     <h1>Most searched for Skills</h1>

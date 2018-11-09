@@ -7,30 +7,41 @@
     <!-- Beginning of Teacher Card -->
     <div class="row">
       <% @teachers.each do |teacher| %>
-        <div class="col-xs-4">
-          <div class="card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('https://kitt.lewagon.com/placeholder/cities/shanghai');">
-            <div class="card-category">Teacher Email: <%= teacher.user.email %></div>
+      <div class="col-xs-4">
+        <% skills = TeacherSkill.where(teacher_id: teacher.id) %>
+        <% top_skill = skills.order('level DESC').first.try(:name) %>
+        <% if top_skill == 'ruby' %>
+          <div class="card ruby">
+        <% elsif top_skill == 'swift' %>
+          <div class="card swift">
+        <% elsif top_skill == 'c' %>
+          <div class="card c">
+        <% elsif top_skill == 'javascript' %>
+          <div class="card javascript">
+        <% elsif top_skill == 'python' %>
+          <div class="card python">
+        <% else %>
+          <div class="card no_skill">
+        <% end %>
+            <div class="skills">
+
+              <%= top_skill %>
+
+            </div>
             <div class="card-description">
               <h2>
-                Teacher ID: <%= teacher.id %>
+                Teacher Name
               </h2>
-
-              <p>
-                Skills:
-                  <% TeacherSkill.where(teacher_id: teacher.id).each do |teacher_skill| %>
-                    <%= teacher_skill.skill.name %>
-                  <% end %>
-              </p>
             </div>
-            <img class="card-user" src="https://kitt.lewagon.com/placeholder/users/tgenaitay">
+            <img class="avatar" src="https://kitt.lewagon.com/placeholder/users/tgenaitay">
             <a class="card-link" href="<%= teacher_path(teacher) %>" ></a>
           </div>
         </div>
-      <% end %>
-    </div>
-    <!-- End of Teacher Card -->
+        <% end %>
+      </div>
+      <!-- End of Teacher Card -->
 
-<!-- Container end -->
+      <!-- Container end -->
+    </div>
   </div>
-</div>
 
