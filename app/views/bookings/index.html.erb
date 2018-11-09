@@ -3,27 +3,20 @@
 <h1>USER BOOKINGS</h1>
 
   <% @user_bookings.each do |booking| %>
-  <p>
-    Price: <%= booking.teacher.hourly_price %>
-
-  </p>
-<!--   <p> <%= booking.start_time %></p>
-  <p> <%= booking.end_time %></p> -->
+  <p> Price: <%= booking.teacher.hourly_price %></p>
+<p> Start Time: <%= booking.start_time %></p>
+  <p> End Time: <%= booking.end_time %></p>
   <% end %>
 
 
 
 
-<<<<<<< HEAD
-<!-- <h1>TEACHER BOOKINGS</h1>
- <%= @teacher_bookings.each do |booking|%>
-=======
+
 <h1>TEACHER BOOKINGS</h1>
- <% @teacher_bookings.each do |booking|%>
- <p>
-   Status: <%= booking.status %>
- </p>
->>>>>>> 9a1a94f2531c32a8da6d88a15c32062219771d58
+ <%= @teacher_bookings.each do |booking|%>
  <%= booking.start_time %>
  <%= booking.end_time %>
- <% end %> -->
+ <%= booking.user %>
+ <% end %>
+
+
