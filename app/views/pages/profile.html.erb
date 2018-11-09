@@ -1,0 +1,28 @@
+<!-- My Student Profile -->
+
+<div class="wrapper">
+
+  <div class="container">
+    <% if user_signed_in? %>
+    <h1>My Student profile</h1>
+      <ul class="list-group">
+
+        <li class="list-group-item">
+          <p>Email: <%= current_user.email %></p>
+        </li>
+
+        <li class="list-group-item">
+          <p>First Name: </p>
+        </li>
+
+        <li class="list-group-item">
+          <p>Last Name:</p>
+        </li>
+      </ul>
+      <% else %>
+      <% render 'new_user_session' %>
+    <% end %>
+
+  </div>
+
+</div>
