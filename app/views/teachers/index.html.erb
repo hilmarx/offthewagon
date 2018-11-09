@@ -44,7 +44,7 @@
         <% skills = TeacherSkill.where(teacher_id: teacher.id) %>
         <% top_skill = skills.order('level DESC').first.try(:name) %>
 
-        <% if top_skill != "" %><div class="card <%= top_skill %>" style="background-image: url('<%= image_path top_skill %>');">
+        <% if top_skill != "" %><div class="card" style="background-image: url('<%= image_path top_skill %>');">
           <% else %><div class="card no_skill"><% end %>
 
             <div class="skills">

@@ -7,29 +7,32 @@
   margin: 5px 0 5px 0;
   box-shadow: 2px 2px 2px black;
   border: solid 1px black;
+  background-color: rgb(250, 250, 250);
+}
+
+.card:hover {
+  margin: 0 0 10px 0;
+  background-size: cover !important;
 }
 
 .ruby {
-  // background-image: url('../../images/ruby.png');
-  // background-color: #F8FFE5;
+
 }
 
 .swift {
-  // background-color: #06D6A0;
-  // background-image: url('../../images/swift.jpg');
+
 }
 
 .c {
-  // background-color: #1B9AAA;
+
 }
 
 .javascript {
-  // background-color: #EF476F;
- // background-image: url('../../images/javascript.png');
+
 }
 
 .python {
-  // background-color: #FFC43D;
+
 }
 
 .no_skill {
@@ -37,15 +40,15 @@
 }
 
 .card:hover {
-  box-shadow: 4px 4px 4px red;
-  border: solid 1px red;
+  box-shadow: 4px 4px 4px rgb(116, 163, 156);
+  border-style: none;
 }
 
 .avatar {
   position: absolute;
   right: 10px;
   top: 10px;
-  width: 40px;
+  width: 60px;
   border-radius: 50%;
 }
 
@@ -63,9 +66,10 @@
   overflow: hidden;
 }
 
-.ruby {
-  background-color: red;
+.card:hover .skills {
+  font-size: 17px;
 }
+
 .card-description {
   position: absolute;
   bottom: 10px;
@@ -76,7 +80,7 @@
 }
 
 .card:hover .card-description h2 {
-  font-size: 40px;
+  font-size: 28px;
 }
 // .card-description {
 //   font-size: 14px;
