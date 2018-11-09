@@ -23,23 +23,11 @@
       <div class="col-xs-4">
         <% skills = TeacherSkill.where(teacher_id: teacher.id) %>
         <% top_skill = skills.order('level DESC').first.try(:name) %>
-        <% if top_skill == 'ruby' %>
-          <div class="card ruby">
-        <% elsif top_skill == 'swift' %>
-          <div class="card swift">
-        <% elsif top_skill == 'c' %>
-          <div class="card c">
-        <% elsif top_skill == 'javascript' %>
-          <div class="card javascript">
-        <% elsif top_skill == 'python' %>
-          <div class="card python">
-        <% else %>
-          <div class="card no_skill">
-        <% end %>
+        <% if top_skill != "" %><div class="card <%= top_skill %>">
+          <% else %><div class="card no_skill"><% end %>
+
             <div class="skills">
-
               <%= top_skill %>
-
             </div>
             <div class="card-description">
               <h2>
@@ -53,22 +41,22 @@
         <% end %>
       </div>
 
-    <!-- List showing all Skills -->
-    <h1>Most searched for Skills</h1>
-    <ul>
-      <div class="row">
-        <% @skills.each do |skill| %>
+      <!-- List showing all Skills -->
+      <h1>Most searched for Skills</h1>
+      <ul>
+        <div class="row">
+          <% @skills.each do |skill| %>
           <div class="col-xs-4">
             <li>
               <%= skill %>
             </li>
           </div>
-      <% end %>
-      </div>
-    </ul>
+          <% end %>
+        </div>
+      </ul>
 
-    <!-- End of list showing all Skills -->
+      <!-- End of list showing all Skills -->
 
 
+    </div>
   </div>
-</div>
