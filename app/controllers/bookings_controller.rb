@@ -1,13 +1,8 @@
 class BookingsController < ApplicationController
 
   def index
-    if current_user.bookings
-      @teacher = Teacher.find_by(user_id: current_user.id)
-      @user_bookings = current_user.bookings
-      @teacher_bookings = Booking.where(teacher_id: @teacher.id)
-    else
-      puts "no bookings"
-    end
+    @user_bookings = current_user.bookings
+    @teacher_bookings = current_user.teacher.try(:bookings)
   end
 
   def show
@@ -30,11 +25,13 @@ class BookingsController < ApplicationController
   end
 
   def create
+    @user = current_user
     @teacher = Teacher.find(params[:teacher_id])
     @booking = Booking.new(booking_params)
-    @booking.teacher_id = teacher.id
+    @booking.user = current_user
+    @booking.teacher_id = @teacher.id
     if @booking.save
-      redirect_to bookings_show_path
+      redirect_to booking_path(@booking)
     else
       render :new
     end
@@ -50,4 +47,7 @@ class BookingsController < ApplicationController
     params.require(:booking).permit(:start_time, :end_time)
   end
 end
+
+
+#controller, routes, added routing buttons to teacher for new booking, teacher index/user index of bookings
 

@@ -15,7 +15,12 @@
       <%= link_to "Become a teacher", new_teacher_path, class: "navbar-wagon-item navbar-wagon-link" if current_user.teacher.nil? %>
 
       <!-- Check Bookings -->
+      <% if current_user %>
       <%= link_to "My Bookings", bookings_path, class: "navbar-wagon-item navbar-wagon-link" %>
+      <% end %>
+
+      <%= link_to "All Teachers", teachers_path,
+      class: "navbar-wagon-item navbar-wagon-link"  %>
 
       <!-- Avatar with the remainding Links as dropdown list -->
       <div class="navbar-wagon-item">
