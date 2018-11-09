@@ -46,10 +46,6 @@
       </div>
 
 
-
-
-
-
   <!-- Displayed when user is NOT logged in -->
     <% else %>
       <!--     <a href="#" class="navbar-wagon-item navbar-wagon-link">Sign up</a> -->
@@ -65,12 +61,58 @@
 
 
   <!-- Dropdown appearing on mobile only -->
+
   <div class="navbar-wagon-item hidden-sm hidden-md hidden-lg">
     <div class="dropdown">
       <i class="fas fa-bars dropdown-toggle" data-toggle="dropdown" role="button"></i>
       <ul class="dropdown-menu dropdown-menu-right navbar-wagon-dropdown-menu">
-        <li><a href="#">Sign up</a></li>
-        <li><a href="#">Sign in</a></li>
+        <!-- If User is signed in -->
+        <% if user_signed_in? %>
+
+          <!-- If User is not a teacher, show "Become a teacher" -->
+          <li>
+            <%= link_to "Become a teacher", new_teacher_path, class: "navbar-wagon-item navbar-wagon-link" if current_user.teacher.nil? %>
+          </li>
+
+          <!-- Check Bookings -->
+          <li>
+            <%= link_to "My Bookings", bookings_path, class: "navbar-wagon-item navbar-wagon-link" %>
+          </li>
+
+          <!-- Edit User / Student Profile -->
+          <!-- We don't have a route to simply display a users profile -->
+          <li>
+            <%= link_to "Edit User Profile", edit_user_registration_path %>
+          </li>
+
+          <!-- Show Teacher profile if it exists -->
+          <% if current_user.teacher %>
+            <li>
+              <%= link_to "Teacher Profile", teacher_path(current_user.teacher), class: "navbar-wagon-item navbar-wagon-link" %>
+            </li>
+          <% end %>
+
+          <!-- Sign Out -->
+          <li>
+            <%= link_to "Log Out", destroy_user_session_path, method: :delete,  class: "navbar-wagon-item navbar-wagon-link" %>
+          </li>
+
+
+        <!-- If User is NOT signed in -->
+        <% else %>
+          <!-- Sign UP -->
+          <li>
+            <%= link_to "Sign up",  new_user_registration_path, class: "navbar-wagon-item navbar-wagon-link" %>
+          </li>
+
+          <!-- Sign IN -->
+          <li>
+            <%= link_to "Sign in", new_user_session_path, class: "navbar-wagon-item navbar-wagon-link" %>
+          </li>
+
+
+        <% end %>
+
       </ul>
     </div>
   </div>
