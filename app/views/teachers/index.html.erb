@@ -6,26 +6,53 @@
 
     <!-- Beginning of Teacher Card -->
     <div class="row">
-      <% @teachers.each do |teacher| %>
-      <div class="col-xs-4">
-        <% skills = TeacherSkill.where(teacher_id: teacher.id) %>
-        <% top_skill = skills.order('level DESC').first.try(:name) %>
-        <% if top_skill == 'ruby' %>
-          <div class="card ruby">
-        <% elsif top_skill == 'swift' %>
-          <div class="card swift">
-        <% elsif top_skill == 'c' %>
-          <div class="card c">
-        <% elsif top_skill == 'javascript' %>
-          <div class="card javascript">
-        <% elsif top_skill == 'python' %>
-          <div class="card python">
-        <% else %>
-          <div class="card no_skill">
+      <% case params[:query] %>
+      <% when "ruby" %>
+        <% ruby_teacher_skills = @teacher_skills.where(name: "ruby") %>
+        <% ruby_teacher_skills.each do |teacher_skill| %>
+          <% @selected_teachers << Teacher.find(teacher_skill.teacher_id) %>
         <% end %>
+
+      <% when "c" %>
+        <% ruby_teacher_skills = @teacher_skills.where(name: "c") %>
+        <% ruby_teacher_skills.each do |teacher_skill| %>
+          <% @selected_teachers << Teacher.find(teacher_skill.teacher_id) %>
+        <% end %>
+
+      <% when "python" %>
+        <% ruby_teacher_skills = @teacher_skills.where(name: "python") %>
+        <% ruby_teacher_skills.each do |teacher_skill| %>
+          <% @selected_teachers << Teacher.find(teacher_skill.teacher_id) %>
+        <% end %>
+
+      <% when "javascript" %>
+        <% ruby_teacher_skills = @teacher_skills.where(name: "javascript") %>
+        <% ruby_teacher_skills.each do |teacher_skill| %>
+          <% @selected_teachers << Teacher.find(teacher_skill.teacher_id) %>
+        <% end %>
+      <% end %>
+
+
+        <% @selected_teachers.each do |teacher| %>
+          <div class="col-xs-4">
+            <% skills = TeacherSkill.where(teacher_id: teacher.id) %>
+            <% top_skill = skills.order('level DESC').first.try(:name) %>
+            <% if top_skill == 'ruby' %>
+              <div class="card ruby">
+             <% elsif top_skill == 'swift' %>
+              <div class="card swift">
+            <% elsif top_skill == 'c' %>
+              <div class="card c">
+            <% elsif top_skill == 'javascript' %>
+              <div class="card javascript">
+            <% elsif top_skill == 'python' %>
+              <div class="card python">
+            <% else %>
+              <div class="card no_skill">
+            <% end %>
             <div class="skills">
 
-              <%= top_skill %>
+            <%= top_skill %>
 
             </div>
             <div class="card-description">
@@ -39,7 +66,8 @@
         </div>
         <% end %>
       </div>
-      <!-- End of Teacher Card -->
+    <!-- End of Teacher Card -->
+
 
       <!-- Container end -->
     </div>

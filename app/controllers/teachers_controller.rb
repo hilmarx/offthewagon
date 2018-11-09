@@ -22,6 +22,8 @@ class TeachersController < ApplicationController
   # works
   def index
     @teachers = Teacher.all
+    @teacher_skills = TeacherSkill.all
+    @selected_teachers = []
   end
 
   # works

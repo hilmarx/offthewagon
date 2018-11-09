@@ -1,8 +1,14 @@
-<div class="banner" style="background-image: linear-gradient(-225deg, rgba(0,101,168,0.6) 0%, rgba(0,36,61,0.6) 50%), url('https://kitt.lewagon.com/placeholder/cities/berlin');">
+<div class="banner" style="background-image: linear-gradient(-225deg, rgba(0,101,168,0.6) 0%, rgba(0,36,61,0.6) 50%), url('https://images.ctfassets.net/k428n7s2pxlu/1aJnbCcUvAa4qiIg4kMeI/9c93dd78ff2c7c5ffbff3e14f5878a87/6-reasons-for-pair-programming.jpg');">
   <div class="banner-content">
     <h1>Off The Wagon</h1>
-    <p>Ask a TA what the fuck is happening after Le Wagon is done!</p>
-    <a class="btn btn-primary btn-lg">Search now</a>
+    <h3>Ask a TA what the fuck is happening after Le Wagon is done!</h3>
+    <p>Search for:</p>
+    <!-- Create link to index page, input button class and transfer skill via query -->
+
+    <a class="btn btn-primary btn-lg" href=" <%= teachers_path %>?query=ruby">Ruby</a>
+    <a class="btn btn-primary btn-lg"  href=" <%= teachers_path %>?query=javascript">JavaScript</a>
+    <a class="btn btn-primary btn-lg"  href=" <%= teachers_path %>?query=python">Python</a>
+    <a class="btn btn-primary btn-lg"  href=" <%= teachers_path %>?query=c">C</a>
   </div>
 </div>
 
