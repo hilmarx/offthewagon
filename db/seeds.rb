@@ -16,15 +16,13 @@ Skill.destroy_all
 
 puts "Generating users..."
 
-# user_array = []
+
 20.times do
 
   user = User.new(email: Faker::Internet.email, password: Faker::Internet.password(6))
   user.save!
- #Jethro Code
- #user_array << User.create!(email: Faker::Internet.email, password: Faker::Internet.password(6))
+
 end
-#p user_array
 
 puts "Users generated"
 puts "Generating skills..."
