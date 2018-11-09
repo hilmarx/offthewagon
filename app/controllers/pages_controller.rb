@@ -5,4 +5,7 @@ class PagesController < ApplicationController
     @teachers = Teacher.all
     @skills = Skill.all
   end
+
+  def profile
+  end
 end
