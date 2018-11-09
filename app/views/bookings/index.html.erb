@@ -11,14 +11,17 @@
 
 
 
+<% if @teacher_bookings %>
+  <h1>STUDENTS BOOKING ME</h1>
+   <%= @teacher_bookings.each do |booking|%>
+   <p> Start Time: <%= booking.start_time %></p>
+   <p> End Time: <%= booking.end_time %> </p>
+   <p> User: <%= booking.user_id %></p>
+   <p> Price: <%= booking.total_price %>
+   <% end %>
+<% end %>
 
-<h1>STUDENTS BOOKING ME</h1>
- <%= @teacher_bookings.each do |booking|%>
- <p> Start Time: <%= booking.start_time %></p>
- <p> End Time: <%= booking.end_time %> </p>
- <p> User: <%= booking.user_id %></p>
- <p> Price: <%= booking.total_price %>
- <% end %>
 
-
-
+   <%= link_to "All Teachers", teachers_path %>
+   /
+   <%= link_to "home", root_path %>
