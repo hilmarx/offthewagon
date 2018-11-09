@@ -6,27 +6,54 @@
 
     <!-- Beginning of Teacher Card -->
     <div class="row">
-      <% @teachers.each do |teacher| %>
-        <div class="col-xs-4">
-          <div class="card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('https://kitt.lewagon.com/placeholder/cities/shanghai');">
-            <div class="card-category">Teacher Email: <%= teacher.user.email %></div>
-            <div class="card-description">
-              <h2>
-                Teacher ID: <%= teacher.id %>
-              </h2>
+      <% case params[:query] %>
+      <% when "ruby" %>
+        <% ruby_teacher_skills = @teacher_skills.where(name: "ruby") %>
+        <% ruby_teacher_skills.each do |teacher_skill| %>
+          <% @selected_teachers << Teacher.find(teacher_skill.teacher_id) %>
+        <% end %>
 
-              <p>
-                Skills:
-                  <% TeacherSkill.where(teacher_id: teacher.id).each do |teacher_skill| %>
-                    <%= teacher_skill.skill.name %>
-                  <% end %>
-              </p>
-            </div>
-            <img class="card-user" src="https://kitt.lewagon.com/placeholder/users/tgenaitay">
-            <a class="card-link" href="<%= teacher_path(teacher) %>" ></a>
-          </div>
-        </div>
+      <% when "c" %>
+        <% ruby_teacher_skills = @teacher_skills.where(name: "c") %>
+        <% ruby_teacher_skills.each do |teacher_skill| %>
+          <% @selected_teachers << Teacher.find(teacher_skill.teacher_id) %>
+        <% end %>
+
+      <% when "python" %>
+        <% ruby_teacher_skills = @teacher_skills.where(name: "python") %>
+        <% ruby_teacher_skills.each do |teacher_skill| %>
+          <% @selected_teachers << Teacher.find(teacher_skill.teacher_id) %>
+        <% end %>
+
+      <% when "javascript" %>
+        <% ruby_teacher_skills = @teacher_skills.where(name: "javascript") %>
+        <% ruby_teacher_skills.each do |teacher_skill| %>
+          <% @selected_teachers << Teacher.find(teacher_skill.teacher_id) %>
+        <% end %>
       <% end %>
+
+
+        <% @selected_teachers.each do |teacher| %>
+          <div class="col-xs-4">
+            <div class="card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('https://kitt.lewagon.com/placeholder/cities/shanghai');">
+              <div class="card-category">Teacher Email: <%= teacher.user.email %></div>
+              <div class="card-description">
+                <h2>
+                  Teacher ID: <%= teacher.id %>
+                </h2>
+
+                <p>
+                  Skills:
+                    <% TeacherSkill.where(teacher_id: teacher.id).each do |teacher_skill| %>
+                      <%= teacher_skill.skill.name %>
+                    <% end %>
+                </p>
+              </div>
+              <img class="card-user" src="https://kitt.lewagon.com/placeholder/users/tgenaitay">
+              <a class="card-link" href="<%= teacher_path(teacher) %>" ></a>
+            </div>
+          </div>
+        <% end %>
     </div>
     <!-- End of Teacher Card -->
 
