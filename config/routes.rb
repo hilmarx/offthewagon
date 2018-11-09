@@ -4,6 +4,9 @@ Rails.application.routes.draw do
   # Home page should be pages#home
   root to: 'pages#home'
 
+  # Root to profile page
+  get 'pages/profile' => 'pages#profile', as: 'profile'
+
   # As a user, I want to see all available teachers, see indivudal profiles and create a new teacher profile for me
   # As a teacher, I want to edit my teacher profile
   resources 'bookings', only:[:new, :create, :index, :show, :edit, :update, :destroy]
