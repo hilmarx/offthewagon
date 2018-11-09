@@ -19,13 +19,12 @@
       <%= link_to "My Bookings", bookings_path, class: "navbar-wagon-item navbar-wagon-link" %>
       <% end %>
 
-      <%= link_to "All Teachers", teachers_path,
-      class: "navbar-wagon-item navbar-wagon-link"  %>
+      <a class="navbar-wagon-item navbar-wagon-link" href=" <%= teachers_path %>?query=all">All teachers</a>
 
       <!-- Avatar with the remainding Links as dropdown list -->
       <div class="navbar-wagon-item">
         <div class="dropdown">
-          <img src="https://kitt.lewagon.com/placeholder/users/ssaunier" class="avatar dropdown-toggle" id="navbar-wagon-menu" data-toggle="dropdown">
+          <img src="https://kitt.lewagon.com/placeholder/users/ssaunier" class="avatar-navbar dropdown-toggle" id="navbar-wagon-menu" data-toggle="dropdown">
           <ul class="dropdown-menu dropdown-menu-right navbar-wagon-dropdown-menu">
             <!-- Show user Profile -->
             <!-- We don't have a route to simply display a users profile -->
