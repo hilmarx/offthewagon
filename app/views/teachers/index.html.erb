@@ -7,16 +7,25 @@
     <!-- Beginning of Teacher Card -->
     <div class="row">
       <% @teachers.each do |teacher| %>
-        <div class="col-xs-4">
-          <div class="card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('https://kitt.lewagon.com/placeholder/cities/shanghai');">
+      <div class="col-xs-4">
+        <% skills = TeacherSkill.where(teacher_id: teacher.id) %>
+        <% top_skill = skills.order('level DESC').first.try(:name) %>
+        <% if top_skill == 'ruby' %>
+          <div class="card ruby">
+        <% elsif top_skill == 'swift' %>
+          <div class="card swift">
+        <% elsif top_skill == 'c' %>
+          <div class="card c">
+        <% elsif top_skill == 'javascript' %>
+          <div class="card javascript">
+        <% elsif top_skill == 'python' %>
+          <div class="card python">
+        <% else %>
+          <div class="card no_skill">
+        <% end %>
             <div class="skills">
-              <%#= teacher.top_skill.try(:name) %>
-              <% teacher.skills %>
-              <% skills = TeacherSkill.where(teacher_id: teacher.id) %>
-                <%= skills.order('level DESC').first.try(:name) %>
-               <!-- skills.order('level DESC').last.name %> -->
 
-
+              <%= top_skill %>
 
             </div>
             <div class="card-description">
@@ -28,11 +37,11 @@
             <a class="card-link" href="<%= teacher_path(teacher) %>" ></a>
           </div>
         </div>
-      <% end %>
-    </div>
-    <!-- End of Teacher Card -->
+        <% end %>
+      </div>
+      <!-- End of Teacher Card -->
 
-<!-- Container end -->
+      <!-- Container end -->
+    </div>
   </div>
-</div>
 

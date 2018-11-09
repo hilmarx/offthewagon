@@ -3,11 +3,35 @@
   text-shadow: 0 1px 3px rgba(0,0,0,0.6);
   background-size: cover !important;
   background-position: center;
-  color: white;
+  // color: white;
   position: relative;
   margin: 5px 0 5px 0;
   box-shadow: 2px 2px 2px black;
   border: solid 1px black;
+}
+
+.ruby {
+  background-color: #F8FFE5;
+}
+
+.swift {
+  background-color: #06D6A0;
+}
+
+.c {
+  background-color: #1B9AAA;
+}
+
+.javascript {
+  background-color: #EF476F;
+}
+
+.python {
+  background-color: #FFC43D;
+}
+
+.no_skill {
+  background-color: white;
 }
 
 .card:hover {

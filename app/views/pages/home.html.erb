@@ -18,7 +18,7 @@
             <div class="skills"><% TeacherSkill.where(teacher_id: teacher.id).each do |teacher_skill| %>
                 <%= teacher_skill.skill.name %>
               <% end %>
-            </div>
+              </div>
 
             <div class="card-description">
               <h2>
