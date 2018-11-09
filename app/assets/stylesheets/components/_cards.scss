@@ -8,6 +8,7 @@
   box-shadow: 2px 2px 2px black;
   border: solid 1px black;
   background-color: rgb(250, 250, 250);
+  background-image: image-url('logo_wide.png');
 }
 
 .card:hover {
@@ -16,27 +17,27 @@
 }
 
 .ruby {
-
+  background-image: image-url('ruby.png');
 }
 
 .swift {
-
+  background-image: image-url('swift.jpg');
 }
 
 .c {
-
+  background-image: image-url('c.png');
 }
 
 .javascript {
-
+  background-image: image-url('javascript.png');
 }
 
 .python {
-
+  background-image: image-url('python.png');
 }
 
-.no_skill {
-  background-color: white;
+.nil {
+  background-image: image-url('logo.png');
 }
 
 .card:hover {
@@ -82,12 +83,7 @@
 .card:hover .card-description h2 {
   font-size: 28px;
 }
-// .card-description {
-//   font-size: 14px;
-//   opacity: 0.7;
-//   font-weight: bold;
-//   color: white;
-// }
+
 .card-link {
   position: absolute;
   top: 0;
