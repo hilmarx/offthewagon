@@ -49,5 +49,5 @@ class BookingsController < ApplicationController
 end
 
 
-#controller, routes, added routing buttons to teacher for new booking
+#controller, routes, added routing buttons to teacher for new booking, teacher index/user index of bookings
 
