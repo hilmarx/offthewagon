@@ -8,8 +8,6 @@
     <% else %>
     <%= image_tag 'https://res.cloudinary.com/dftybtoej/image/upload/v1542031690/coming_soon.jpg', class: "profile_photo" %>
     <% end %>
-    <p>Email: <%= @teacher.user.email %></p>
-    <p>ID: <%= @teacher.id %></p>
 
   <h3>Skills:</h3>
    <% @teacher_skills.each do |skill| %>
