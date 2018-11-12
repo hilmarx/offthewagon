@@ -7,7 +7,7 @@ class BookingsController < ApplicationController
   end
 
   def show
-    mango
+    set_booking
     @teacher = params[:teacher_id]
   end
 
@@ -17,19 +17,19 @@ class BookingsController < ApplicationController
  end
 
  def approve
-  mango
+  set_booking
   @booking.approved!
   redirect_to bookings_path
 end
 
 def cancel
-  mango
+  set_booking
   @booking.cancelled!
   redirect_to bookings_path
 end
 
 def complete
-  mango
+  set_booking
   @booking.completed!
   redirect_to bookings_path
 end
@@ -48,14 +48,14 @@ def create
 end
 
 def destroy
-  mango
+  set_booking
   @booking.destroy
   redirect_to bookings_path
 end
 
 private
 
-def mango
+def set_booking
   @booking = Booking.find(params[:id])
 end
 
