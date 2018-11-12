@@ -3,7 +3,11 @@
 <div class="container text-center">
   <div class="profile_card">
     <h1><%= @teacher.full_name %></h1>
-    <%= image_tag 'stock_photo.jpg', class: "profile_photo" %>
+    <% if @teacher.user.photo != nil %>
+    <%= image_tag @teacher.user.photo, class: "profile_photo" %>
+    <% else %>
+    <%= image_tag 'https://res.cloudinary.com/dftybtoej/image/upload/v1542031690/coming_soon.jpg', class: "profile_photo" %>
+    <% end %>
     <p>Email: <%= @teacher.user.email %></p>
     <p>ID: <%= @teacher.id %></p>
 
