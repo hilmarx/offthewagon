@@ -15,6 +15,18 @@ class BookingsController < ApplicationController
    @booking = Booking.new
   end
 
+  def approve
+    @booking = Booking.find(params[:id])
+    @booking.approved!
+    redirect_to bookings_path
+  end
+
+  def cancel
+    @booking = Booking.find(params[:id])
+    @booking.cancelled!
+    redirect_to bookings_path
+  end
+
   def edit
     @booking = Booking.find(params[:id])
   end
@@ -35,6 +47,8 @@ class BookingsController < ApplicationController
     else
       render :new
     end
+
+
   end
 
   private

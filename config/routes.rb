@@ -10,6 +10,9 @@ Rails.application.routes.draw do
   # As a user, I want to see all available teachers, see indivudal profiles and create a new teacher profile for me
   # As a teacher, I want to edit my teacher profile
   resources 'bookings', only:[:new, :create, :index, :show, :edit, :update, :destroy]
+  patch 'bookings/:id/approve', to: 'bookings#approve', as: :approve_booking
+  patch 'bookings/:id/cancel', to: 'bookings#cancel', as: :cancel
+
 
   resources 'teachers', only:[:index, :show, :edit, :update, :new, :create] do
      resources 'bookings', only:[:new, :create, :destroy]
