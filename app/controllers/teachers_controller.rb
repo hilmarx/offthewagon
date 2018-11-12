@@ -23,10 +23,30 @@ class TeachersController < ApplicationController
 
   # works
   def index
+    # Geo coding start
+    @teachers = Teacher.where.no(latitude: nil, longitude: nil)
+    @markers = @flats.map do |flat|
+      {
+        lng: flat.longitude,
+        lat: flat.latitude
+      }
+    end
     @teachers = Teacher.all
+    # Geo coding end
     @teacher_skills = TeacherSkill.all
     @selected_teachers = []
     @teachers = policy_scope(Teacher)
+  end
+
+    def index
+    @flats = Flat.where.not(latitude: nil, longitude: nil)
+
+    @markers = @flats.map do |flat|
+      {
+        lng: flat.longitude,
+        lat: flat.latitude
+      }
+    end
   end
 
   # works

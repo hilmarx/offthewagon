@@ -84,7 +84,7 @@ Teacher.new(user_id: w.id, hourly_price: Faker::Number.number(3), available_from
 
 Teacher.new(user_id: o.id, hourly_price: Faker::Number.number(3), available_from: Date.today, available_to: (Date.today + rand(100))).save!
 
-Teacher.new(user_id: h.id, hourly_price: Faker::Number.number(3), available_from: Date.today, available_to: (Date.today + rand(100))).save!
+Teacher.new(user_id: h.id, hourly_price: Faker::Number.number(3), available_from: Date.today, available_to: (Date.today + rand(100)), address: "Canngu, Bali").save!
 
 puts "Create Bookings for test users"
 
