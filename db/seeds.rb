@@ -19,7 +19,7 @@ puts "Generating users..."
 
 20.times do
 
-  user = User.new(email: Faker::Internet.email, password: Faker::Internet.password(6))
+  user = User.new(email: Faker::Internet.email, password: Faker::Internet.password(6), first_name: Faker::GreekPhilosophers.name, last_name: Faker::Name.last_name)
   user.save!
 
 end
@@ -68,16 +68,16 @@ puts "Teacher skills generated"
 puts "Finished seeding database"
 
 puts "Create test users"
-j = User.new(email: "j@j.j", password: "jjjjjj")
+j = User.new(email: "j@j.j", password: "jjjjjj", first_name: "Jethro", last_name: "Williams")
 j.save!
 
-w = User.new(email: "w@w.w", password: "wwwwww")
+w = User.new(email: "w@w.w", password: "wwwwww", first_name: "William", last_name: "Something")
 w.save!
 
-o = User.new(email: "o@o.o", password: "oooooo")
+o = User.new(email: "o@o.o", password: "oooooo", first_name: "Owain", last_name: "Unknown")
 o.save!
 
-h = User.new(email: "h@h.h", password: "hhhhhh")
+h = User.new(email: "h@h.h", password: "hhhhhh", first_name: "Hilmar", last_name: "Onyx")
 h.save!
 
 Teacher.new(user_id: j.id, hourly_price: Faker::Number.number(3), available_from: Date.today, available_to: (Date.today + rand(100))).save!
