@@ -3,14 +3,14 @@
     <h1>Off The Wagon</h1>
     <h3><span id="banner-typed-text"></span></h3>
     <!-- Ask a TA what the fuck is happening after Le Wagon is done! -->
-    <p>Search for:</p>
+    <p>Search for</p>
     <!-- Create link to index page, input button class and transfer skill via query -->
-
-    <a class="btn btn-primary btn-lg" href=" <%= teachers_path %>?query=ruby">Ruby</a>
-    <a class="btn btn-primary btn-lg"  href=" <%= teachers_path %>?query=javascript">JavaScript</a>
-    <a class="btn btn-primary btn-lg"  href=" <%= teachers_path %>?query=python">Python</a>
-    <a class="btn btn-primary btn-lg"  href=" <%= teachers_path %>?query=c">C</a>
-    <a class="btn btn-primary btn-lg"  href=" <%= teachers_path %>?query=swift">Swift</a>
+    <form action="<%= teachers_path %>?query=">
+      <div class="form-group">
+          <input id="home_input" class="form-control" name="query" type="text" placeholder="'Ruby', 'Teacher Name'"/>
+          <button type="submit" class="btn btn-primary">Submit</button>
+      </div>
+    </form>
   </div>
 </div>
 
@@ -43,18 +43,15 @@
     </div>
 
     <!-- List showing all Skills -->
-    <h1>Most searched for Skills</h1>
-    <ul>
-      <div class="row">
-        <% @skills.each do |skill| %>
-        <div class="col-xs-4">
-          <li>
-            <%= skill %>
-          </li>
-        </div>
-        <% end %>
-      </div>
-    </ul>
+        <h1>Most searched for Skills</h1>
+
+        <p>Most popular search queries</p>
+        <a class="btn btn-primary btn-lg" href=" <%= teachers_path %>?query=ruby">Ruby</a>
+        <a class="btn btn-primary btn-lg"  href=" <%= teachers_path %>?query=javascript">JavaScript</a>
+        <a class="btn btn-primary btn-lg"  href=" <%= teachers_path %>?query=python">Python</a>
+        <a class="btn btn-primary btn-lg"  href=" <%= teachers_path %>?query=c">C</a>
+        <a class="btn btn-primary btn-lg"  href=" <%= teachers_path %>?query=swift">Swift</a>
+
 
     <!-- End of list showing all Skills -->
 

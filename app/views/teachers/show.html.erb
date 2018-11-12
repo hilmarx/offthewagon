@@ -6,12 +6,16 @@
   <p> <%= skill %></p>
 <% end %>
 
-<p><%= link_to 'Book this teacher!', new_teacher_booking_path(@teacher) %></p>
-
 <% if current_user %>
 <% if current_user.teacher.id == params[:id].to_i %>
 <p><%= link_to 'Edit teacher details', edit_teacher_path %></p>
 <% end %>
 <% end %>
+
+<!-- Validates that User cannot book himself -->
+<%# if current_user.id != @teacher.user_id %>
+    <p><%= link_to 'Book this teacher!', new_teacher_booking_path(@teacher) %></p>
+<%# end %>
+
 
 <p><%= link_to 'Go Back to home page', root_path %> </p>

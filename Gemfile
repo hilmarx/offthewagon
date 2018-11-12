@@ -10,6 +10,8 @@ gem 'redis'
 gem 'faker'
 gem 'devise'
 gem "pundit"
+# PG Search
+gem 'pg_search'
 
 gem 'autoprefixer-rails'
 gem 'bootstrap-sass', '~> 3.3'
