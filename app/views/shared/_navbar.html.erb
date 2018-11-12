@@ -12,14 +12,16 @@
     <% if user_signed_in? %>
 
       <!-- If User is not a teacher, show "Become a teacher" -->
+      <%# if policy(Teacher).create? %>
       <%= link_to "Become a teacher", new_teacher_path, class: "navbar-wagon-item navbar-wagon-link" if current_user.teacher.nil? %>
+      <%# end %>
 
       <!-- Check Bookings -->
       <% if current_user %>
       <%= link_to "My Bookings", bookings_path, class: "navbar-wagon-item navbar-wagon-link" %>
       <% end %>
 
-      <a class="navbar-wagon-item navbar-wagon-link" href=" <%= teachers_path %>?query=all">All teachers</a>
+      <a class="navbar-wagon-item navbar-wagon-link" href=" <%= teachers_path %>">All teachers</a>
 
       <!-- Avatar with the remainding Links as dropdown list -->
       <div class="navbar-wagon-item">

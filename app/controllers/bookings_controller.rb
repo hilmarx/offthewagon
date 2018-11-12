@@ -4,17 +4,21 @@ class BookingsController < ApplicationController
     @user_bookings = current_user.bookings
     @teacher_bookings = current_user.teacher.try(:bookings)
     @teacher = params[:teacher_id]
+    @teacher_booking = policy_scope(Teacher)
   end
 
   def show
     set_booking
     @teacher = params[:teacher_id]
+    authorize @booking
   end
 
   def new
    @teacher = Teacher.find(params[:teacher_id])
    @booking = Booking.new
- end
+   authorize @booking
+  end
+
 
  def approve
   set_booking
@@ -34,16 +38,19 @@ def complete
   redirect_to bookings_path
 end
 
+
 def create
   @user = current_user
   @teacher = Teacher.find(params[:teacher_id])
   @booking = Booking.new(booking_params)
   @booking.user = current_user
   @booking.teacher_id = @teacher.id
+  authorize @booking
   if @booking.save
     redirect_to booking_path(@booking)
   else
     render :new
+    end
   end
 end
 
