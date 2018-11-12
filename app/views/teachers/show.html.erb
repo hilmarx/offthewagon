@@ -6,22 +6,23 @@
     <%= image_tag 'stock_photo.jpg', class: "profile_photo" %>
     <p>Email: <%= @teacher.user.email %></p>
     <p>ID: <%= @teacher.id %></p>
-    
+
   <h3>Skills:</h3>
    <% @teacher_skills.each do |skill| %>
     <h4 class="skill"><%= skill.name.capitalize %></h4>
     <% level = "" %>
-    <% case skill.level when 1 then level="squire" %>
-    <% when 2 then level="knight" %>
-    <% when 3 then level="better than you" %>
-    <% when 4 then level="ascending" %>
-    <% when 5 then level="god mode" %>
+    <% case skill.level %>
+      <% when 1 then level="squire" %>
+      <% when 2 then level="knight" %>
+      <% when 3 then level="better than you" %>
+      <% when 4 then level="ascending" %>
+      <% when 5 then level="god mode" %>
     <% else level="wtf?" %>
     <% end %>
-    <p><%= level.capitalize %> <%= link_to "delete", teacher_teacher_skill_path(skill), method: :delete %></p>
-    <%=  render 'teacher_skills/form' %>
+    <p><%= level.capitalize %> <%= link_to "delete", teacher_teacher_skill_path(@teacher, skill), method: :delete %></p>
 
   <% end %>
+  <%=  render 'teacher_skills/form' %>
 
 
 <!-- Checks if user is signed in -->
