@@ -30,6 +30,8 @@ class TeachersController < ApplicationController
   def show
     # set_teacher
     @teacher_skills = TeacherSkill.where(teacher_id: @teacher.id)
+    @new_skill = TeacherSkill.new
+    @skills = Skill.all
   end
 
   # works

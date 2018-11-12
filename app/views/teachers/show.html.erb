@@ -1,10 +1,19 @@
-<h1>I'm the teacher#show page</h1>
+<div class="wrapper">
+  <div class="container text-center">
+    <h1> <%= @teacher.full_name %> </h1>
+    <div class="row">
+      <p>Teacher ID: <%= @teacher.id %></p>
+      <p>Skills:</p>
+        <% @teacher_skills.each do |skill| %>
+        <p>Name: <%= skill.name %> ||| Level: <%= skill.level %>  <%= link_to "delete", teacher_teacher_skill_path(skill), method: :delete %> </p>
+      <% end %>
+      <%=  render 'teacher_skills/form' %>
 
-<p>Username: <%= @teacher.user.email %></p>
-<p>Id <%= @teacher.id %></p>
-<h3>Skills: <% @teacher_skills.each do |skill| %></h3>
-  <p> <%= skill %></p>
-<% end %>
+    </div>
+  </div>
+</div>
+
+
 
 <!-- Validates that User cannot book himself -->
 <%# if current_user.id == @teacher.user_id %>

@@ -1,7 +1,7 @@
 # I think we only need delete, new and create
 
 class TeacherSkillsController < ApplicationController
-  before_action :set_teacher_skill, only: [:show, :edit, :update, :destroy]
+  before_action :set_teacher_skill, only: [:show, :edit, :update]
   # def index
   #   @teacher_skills = TeacherSkill.all
   # end
@@ -22,12 +22,14 @@ class TeacherSkillsController < ApplicationController
   # end
 
   def new
-    @teacher_skill = TeacherSkill.new
+    @new_skill = TeacherSkill.new
+    @teacher = Teacher.find(params[:teacher_id])
   end
 
   def create
     @teacher_skill = TeacherSkill.new(teacher_skill_params)
     @teacher = Teacher.find(params[:teacher_id])
+    @teacher_skill.teacher = @teacher
     if @teacher_skill.save
       redirect_to teacher_path(@teacher)
     else
@@ -37,7 +39,9 @@ class TeacherSkillsController < ApplicationController
 
 
   def destroy
-    @teacher = Teacher.find(params[:teacher_id])
+    @teacher = Teacher.find(params[:id])
+    # dont know why, but it is the way it is
+    @teacher_skill = TeacherSkill.find(params[:teacher_id])
     @teacher_skill.destroy
     redirect_to teacher_path(@teacher)
   end
@@ -49,7 +53,7 @@ class TeacherSkillsController < ApplicationController
   end
 
   def teacher_skill_params
-    params.require(:teacher_skill).permit(:level, :skill_id, :teacher_id)
+    params.require(:teacher_skill).permit(:level, :skill_id, :teacher_id, :teacher_skill_id)
   end
 
 end
