@@ -6,7 +6,11 @@
 
     <!-- Beginning of Teacher Card -->
     <div class="row">
-      <% @selected_teachers = Teacher.pg_search(params[:query]) %>
+      <% if params[:query].present? %>
+        <% @selected_teachers = Teacher.pg_search(params[:query]) %>
+      <% else %>
+        <% @selected_teachers = @teachers %>
+      <% end %>
 
       <% @selected_teachers.each do |teacher| %>
       <div class="col-xs-4">
