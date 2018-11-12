@@ -7,7 +7,7 @@ class BookingsController < ApplicationController
   end
 
   def show
-    @booking = Booking.find(params[:id])
+    mango
     @teacher = params[:teacher_id]
   end
 
@@ -17,19 +17,19 @@ class BookingsController < ApplicationController
  end
 
  def approve
-  @booking = Booking.find(params[:id])
+  mango
   @booking.approved!
   redirect_to bookings_path
 end
 
 def cancel
-  @booking = Booking.find(params[:id])
+  mango
   @booking.cancelled!
   redirect_to bookings_path
 end
 
 def complete
-  @booking = Booking.find(params[:id])
+  mango
   @booking.completed!
   redirect_to bookings_path
 end
@@ -48,12 +48,16 @@ def create
 end
 
 def destroy
-  @booking = Booking.find(params[:id])
+  mango
   @booking.destroy
   redirect_to bookings_path
 end
 
 private
+
+def mango
+  @booking = Booking.find(params[:id])
+end
 
 def booking_params
   params.require(:booking).permit(:teacher_id, :start_time, :end_time, :total_price, :status)
