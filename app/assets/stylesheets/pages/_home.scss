@@ -1,1 +1,11 @@
-// Specific CSS for your home-page
+.search_buttons {
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.search_buttons a {
+  border-radius: 5px;
+  box-shadow: 2px 2px 2px black;
+  padding: 20px 40px;
+  border: 1px solid black;
+}
