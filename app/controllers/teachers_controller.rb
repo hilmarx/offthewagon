@@ -24,11 +24,11 @@ class TeachersController < ApplicationController
   # works
   def index
     # Geo coding start
-    @teachers = Teacher.where.no(latitude: nil, longitude: nil)
-    @markers = @flats.map do |flat|
+    @teachers = Teacher.where.not(latitude: nil, longitude: nil)
+    @markers = @teachers.map do |teach|
       {
-        lng: flat.longitude,
-        lat: flat.latitude
+        lng: teach.longitude,
+        lat: teach.latitude
       }
     end
     @teachers = Teacher.all
@@ -38,16 +38,6 @@ class TeachersController < ApplicationController
     @teachers = policy_scope(Teacher)
   end
 
-    def index
-    @flats = Flat.where.not(latitude: nil, longitude: nil)
-
-    @markers = @flats.map do |flat|
-      {
-        lng: flat.longitude,
-        lat: flat.latitude
-      }
-    end
-  end
 
   # works
   def show
