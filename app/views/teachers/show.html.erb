@@ -7,10 +7,10 @@
 <% end %>
 
 <!-- Validates that User cannot book himself -->
-<% if current_user.id == @teacher.user_id %>
+<%# if current_user.id == @teacher.user_id %>
     <p><%= link_to 'Edit teacher details', edit_teacher_path %></p>
-  <% else %>
+  <%# else %>
     <p><%= link_to 'Book this teacher!', new_teacher_booking_path(@teacher) %></p>
-<% end %>
+<%# end %>
 
 <p><%= link_to 'Go Back to home page', root_path %> </p>

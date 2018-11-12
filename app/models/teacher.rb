@@ -8,10 +8,10 @@ class Teacher < ApplicationRecord
   # Pg Search Start
   # Search by Teacher.user name and skill category
   include PgSearch
-  pg_search_scope :search_by_teacher_user_name,
-    against: [ :title, :syllabus ],
+  pg_search_scope :global_search,
     associated_against: {
-      user: [ :first_name, :last_name ]
+      user: [ :first_name, :last_name ],
+      skill: [:name]
     },
     using: {
       tsearch: { prefix: true }

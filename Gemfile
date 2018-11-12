@@ -13,8 +13,8 @@ gem 'faker'
 
 # Gemfile
 gem 'devise'
-# Elastic Search
-gem 'searchkick', '~> 3.0'
+# PG Search
+gem 'pg_search'
 
 
 
