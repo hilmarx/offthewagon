@@ -1,10 +1,24 @@
-<h1>I'm the teacher#show page</h1>
+<div class="wrapper">
+  <div class="profile_card">
+<h1><%= @teacher.full_name %></h1>
 
+<%= image_tag 'stock_photo.jpg', class: "profile_photo" %>
 <p>Username: <%= @teacher.user.email %></p>
 <p>ID: <%= @teacher.id %></p>
 <h3>Skills: <% @teacher_skills.each do |skill| %></h3>
-  <p> <%= skill %></p>
+  <h4 class="skill"><%= skill.name.capitalize %></h4>
+    <% level = "" %>
+    <% case skill.level when 1 then level="squire" %>
+    <% when 2 then level="knight" %>
+    <% when 3 then level="better than you" %>
+    <% when 4 then level="ascending" %>
+    <% when 5 then level="god mode" %>
+    <% else level="wtf?" %>
+    <% end %>
+    <p><%= level.capitalize %></p>
+
 <% end %>
+
 
 <!-- Checks if user is signed in -->
 <% if user_signed_in? %>
@@ -21,3 +35,5 @@
 <% end %>
 
 <p><%= link_to 'Go Back to home page', root_path %> </p>
+</div>
+</div>
