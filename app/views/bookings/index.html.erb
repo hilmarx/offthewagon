@@ -9,7 +9,7 @@
     <% if booking.status == "complete" %>
       <p>total price: $<%= ((booking.end_time - booking.start_time) / 3600) * booking.teacher.hourly_price %></p>
       <% end %>
-      <%= link_to '<Cancel>', cancel_path(booking), method: :patch unless booking.status == "cancelled" || booking.status == "complete" %>
+      <%= link_to 'Cancel', cancel_path(booking), method: :patch unless booking.status == "cancelled" || booking.status == "complete" %>
       <% if booking.status == "cancelled" || booking.status == "complete" %>
       <%= link_to "Remove", booking_path(booking.id), method: :delete %>
       <br>
@@ -32,9 +32,9 @@
       <% if booking.status == "complete" %>
       <p>total price: $<%= ((booking.end_time - booking.start_time) / 3600) * booking.teacher.hourly_price %></p>
       <% end %>
-      <%= link_to '<Approve>', approve_booking_path(booking), method: :patch unless booking.status == "cancelled" || booking.status == "complete" || booking.status == "approved" %>
-      <%= link_to '<Cancel>', cancel_path(booking), method: :patch unless booking.status == "cancelled" || booking.status == "complete" %>
-      <%= link_to '<Mark Completed>', complete_path(booking), method: :post unless booking.status == "cancelled" || booking.status == "complete" %>
+      <%= link_to 'Approve', approve_booking_path(booking), method: :patch unless booking.status == "cancelled" || booking.status == "complete" || booking.status == "approved" %>
+      <%= link_to 'Cancel', cancel_path(booking), method: :patch unless booking.status == "cancelled" || booking.status == "complete" %>
+      <%= link_to 'Mark Completed', complete_path(booking), method: :post unless booking.status == "cancelled" || booking.status == "complete" %>
       <% if booking.status == "cancelled" || booking.status == "complete" %>
       <%= link_to "Remove", booking_path(booking.id), method: :delete %>
       <% end %>
