@@ -1,16 +1,29 @@
-<h1>I'm the teacher#show page</h1>
+<div class="wrapper">
+  <div class="profile_card">
+<h1><%= @teacher.full_name %></h1>
 
-<p>Username: <%= @teacher.user.email %></p>
-<p>Id <%= @teacher.id %></p>
+<%= image_tag 'stock_photo.jpg', class: "profile_photo" %>
 <h3>Skills: <% @teacher_skills.each do |skill| %></h3>
-  <p> <%= skill %></p>
+  <h4 class="skill"><%= skill.name.capitalize %></h4>
+    <% level = "" %>
+    <% case skill.level when 1 then level="squire" %>
+    <% when 2 then level="knight" %>
+    <% when 3 then level="better than you" %>
+    <% when 4 then level="ascending" %>
+    <% when 5 then level="god mode" %>
+    <% else level="wtf?" %>
+    <% end %>
+    <p><%= level.capitalize %></p>
+
 <% end %>
 
 <!-- Validates that User cannot book himself -->
 <%# if current_user.id == @teacher.user_id %>
-    <p><%= link_to 'Edit teacher details', edit_teacher_path %></p>
+<p><%= link_to 'Edit teacher details', edit_teacher_path %></p>
   <%# else %>
-    <p><%= link_to 'Book this teacher!', new_teacher_booking_path(@teacher) %></p>
+<p><%= link_to 'Book this teacher!', new_teacher_booking_path(@teacher) %></p>
 <%# end %>
 
 <p><%= link_to 'Go Back to home page', root_path %> </p>
+</div>
+</div>
