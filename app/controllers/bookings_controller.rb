@@ -2,6 +2,7 @@ class BookingsController < ApplicationController
 
   def index
     @user_bookings = current_user.bookings
+    # rather than If statement
     @teacher_bookings = current_user.teacher.try(:bookings)
     @teacher = params[:teacher_id]
     @teacher_booking = policy_scope(Teacher)
@@ -22,18 +23,21 @@ class BookingsController < ApplicationController
 
  def approve
   set_booking
+  authorize @booking
   @booking.approved!
   redirect_to bookings_path
 end
 
 def cancel
   set_booking
+  authorize @booking
   @booking.cancelled!
   redirect_to bookings_path
 end
 
 def complete
   set_booking
+  authorize @booking
   @booking.completed!
   redirect_to bookings_path
 end
@@ -56,6 +60,7 @@ end
 
 def destroy
   set_booking
+  authorize @booking
   @booking.destroy
   redirect_to bookings_path
 end
