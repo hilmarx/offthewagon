@@ -11,7 +11,8 @@
       <% end %>
       <%= link_to 'Cancel', cancel_path(booking), method: :patch unless booking.status == "cancelled" || booking.status == "complete" %>
       <% if booking.status == "cancelled" || booking.status == "complete" %>
-      <%= link_to "Remove", booking_path(booking.id), method: :delete %>
+      <!-- Lets leave that out for now -->
+      <%#= link_to "Remove", booking_path(booking.id), method: :delete %>
       <br>
       <br>
       <br>

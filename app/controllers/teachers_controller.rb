@@ -41,6 +41,7 @@ class TeachersController < ApplicationController
   # works
   def edit
     # set_teacher
+    authorize @teacher
   end
 
   # works
