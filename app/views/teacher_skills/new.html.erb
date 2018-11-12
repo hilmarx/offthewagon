@@ -1,2 +1,8 @@
-<h1>TeacherSkills#new</h1>
-<p>Find me in app/views/teacher_skills/new.html.erb</p>
+<h1>Create a new skill</h1>
+
+
+<%= simple_form_for [@teacher, @new_skill], :url => teacher_teacher_skills_path, :method => :post do |f| %>
+  <%= f.association :skill, as: :radio_buttons %>
+  <%= f.input :level %>
+  <%= f.submit %>
+<% end %>

@@ -1,0 +1,5 @@
+<%= simple_form_for [@teacher, @new_skill] do |f| %>
+  <%= f.association :skill, as: :radio_buttons %>
+  <%= f.input :level %>
+  <%= f.submit %>
+<% end %>

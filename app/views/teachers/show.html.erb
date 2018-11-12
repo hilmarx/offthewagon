@@ -1,12 +1,15 @@
 <div class="wrapper">
-  <div class="profile_card">
-<h1><%= @teacher.full_name %></h1>
 
-<%= image_tag 'stock_photo.jpg', class: "profile_photo" %>
-<p>Username: <%= @teacher.user.email %></p>
-<p>ID: <%= @teacher.id %></p>
-<h3>Skills: <% @teacher_skills.each do |skill| %></h3>
-  <h4 class="skill"><%= skill.name.capitalize %></h4>
+<div class="container text-center">
+  <div class="profile_card">
+    <h1><%= @teacher.full_name %></h1>
+    <%= image_tag 'stock_photo.jpg', class: "profile_photo" %>
+    <p>Email: <%= @teacher.user.email %></p>
+    <p>ID: <%= @teacher.id %></p>
+    
+  <h3>Skills:</h3>
+   <% @teacher_skills.each do |skill| %>
+    <h4 class="skill"><%= skill.name.capitalize %></h4>
     <% level = "" %>
     <% case skill.level when 1 then level="squire" %>
     <% when 2 then level="knight" %>
@@ -15,9 +18,10 @@
     <% when 5 then level="god mode" %>
     <% else level="wtf?" %>
     <% end %>
-    <p><%= level.capitalize %></p>
+    <p><%= level.capitalize %> <%= link_to "delete", teacher_teacher_skill_path(skill), method: :delete %></p>
+    <%=  render 'teacher_skills/form' %>
 
-<% end %>
+  <% end %>
 
 
 <!-- Checks if user is signed in -->
