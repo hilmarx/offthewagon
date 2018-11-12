@@ -23,12 +23,8 @@
      <p> Price: <%= booking.total_price %></p>
      <p>status: <%= booking.status %></p>
     <%= link_to 'Approve', approve_booking_path(booking), method: :patch unless booking.status == "cancelled" %>
-
-
-    |<%= link_to 'Cancel', cancel_path(booking), method: :patch %>
-
+  |<%= link_to 'Cancel', cancel_path(booking), method: :patch %>
   <% end %>
   |<%= link_to "All Teachers", teachers_path %>
-
   |<%= link_to "Home", root_path %>
 <% end %>
