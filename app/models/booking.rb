@@ -9,8 +9,8 @@ class Booking < ApplicationRecord
     self.status ||= "Pending"
   end
 
-  def pending!
-    update_attribute :status, "pending"
+  def completed!
+    update_attribute :status, "complete"
   end
 
   def approved!

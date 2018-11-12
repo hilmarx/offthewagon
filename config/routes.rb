@@ -12,6 +12,7 @@ Rails.application.routes.draw do
   resources 'bookings', only:[:new, :create, :index, :show, :edit, :update, :destroy]
   patch 'bookings/:id/approve', to: 'bookings#approve', as: :approve_booking
   patch 'bookings/:id/cancel', to: 'bookings#cancel', as: :cancel
+  post 'bookings/:id/complete', to: 'bookings#complete', as: :complete
 
 
   resources 'teachers', only:[:index, :show, :edit, :update, :new, :create] do

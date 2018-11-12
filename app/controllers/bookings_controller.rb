@@ -27,6 +27,12 @@ class BookingsController < ApplicationController
     redirect_to bookings_path
   end
 
+  def complete
+    @booking = Booking.find(params[:id])
+    @booking.completed!
+    redirect_to bookings_path
+  end
+
   def edit
     @booking = Booking.find(params[:id])
   end

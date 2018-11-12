@@ -1,30 +1,30 @@
 <!-- Display all the users bookings -->
 
 
-<h1>ME BOOKING A TEACHER</h1>
+<h1><B>MY TEACHERS</B></h1>
 
   <% @user_bookings.each do |booking| %>
   <p> Price: <%= booking.teacher.hourly_price %></p>
   <p> Start Time: <%= booking.start_time %></p>
   <p> End Time: <%= booking.end_time %></p>
   <p>status: <%= booking.status %></p>
-  <%= link_to 'Cancel', cancel_path(booking), method: :patch %>
-  <%= link_to "Home", root_path %>
+  <%= link_to '<Cancel>', cancel_path(booking), method: :patch unless booking.status == "cancelled" || booking.status == "complete" %>
+    <br>
   <% end %>
 
 
 
 <% if @teacher_bookings %>
-  <h1>STUDENTS BOOKING ME</h1>
+  <h1><b>MY CLIENTS</b></h1>
    <% @teacher_bookings.each do |booking|%>
      <p> Start Time: <%= booking.start_time %></p>
      <p> End Time: <%= booking.end_time %> </p>
      <p> User: <%= booking.user_id %></p>
      <p> Price: <%= booking.total_price %></p>
      <p>status: <%= booking.status %></p>
-    <%= link_to 'Approve', approve_booking_path(booking), method: :patch unless booking.status == "cancelled" %>
-  |<%= link_to 'Cancel', cancel_path(booking), method: :patch %>
+    <%= link_to '<Approve>', approve_booking_path(booking), method: :patch unless booking.status == "cancelled" || booking.status == "complete" %>
+  <%= link_to '<Cancel>', cancel_path(booking), method: :patch unless booking.status == "cancelled" || booking.status == "complete" %>
+  <%= link_to '<Mark Completed>', complete_path(booking), method: :patch unless booking.status == "cancelled" || booking.status == "complete" %>
+    <br>
   <% end %>
-  |<%= link_to "All Teachers", teachers_path %>
-  |<%= link_to "Home", root_path %>
 <% end %>
