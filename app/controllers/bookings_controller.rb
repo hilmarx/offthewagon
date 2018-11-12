@@ -73,7 +73,6 @@ end
 def booking_time_params
   params.require(:booking).permit(:start_time, :end_time)
 end
-end
 
 
 #controller, routes, added routing buttons to teacher for new booking, teacher index/user index of bookings
