@@ -1,5 +1,5 @@
 <!-- Display all the users bookings -->
-<h1><B>MY TEACHERS</B></h1>
+<h1>Teachers</h1>
 
   <% @user_bookings.each do |booking| %>
   <p> Price: $<%= booking.teacher.hourly_price %>/hr</p>
@@ -22,7 +22,7 @@
 
 
 <% if @teacher_bookings %>
-  <h1><b>MY CLIENTS</b></h1>
+  <h1>Clients</h1>
 
    <% @teacher_bookings.each do |booking|%>
    <p> Start Time: <%= booking.start_time %></p>
