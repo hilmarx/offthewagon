@@ -28,7 +28,11 @@
               <%= teacher.full_name %>
             </h2>
           </div>
+          <% if teacher.user.photo != nil %>
           <%= image_tag teacher.user.photo, class: 'avatar' %>
+          <% else %>
+          <%= image_tag 'https://res.cloudinary.com/dftybtoej/image/upload/v1542030994/empty_profile.jpg', class: 'avatar' %>
+          <% end %>
           <a class="card-link" href="<%= teacher_path(teacher) %>" ></a>
         </div>
       </div>
