@@ -13,6 +13,9 @@ gem 'faker'
 
 # Gemfile
 gem 'devise'
+# Elastic Search
+gem 'searchkick', '~> 3.0'
+
 
 
 gem 'autoprefixer-rails'
