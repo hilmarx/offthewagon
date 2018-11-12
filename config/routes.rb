@@ -15,8 +15,9 @@ Rails.application.routes.draw do
   post 'bookings/:id/complete', to: 'bookings#complete', as: :complete
 
 
-  resources 'teachers', only:[:index, :show, :edit, :update, :new, :create] do
-     resources 'bookings', only:[:new, :create]
+  resources 'teachers', only:[:index, :show, :edit, :update, :new, :create, :destroy] do
+     resources 'bookings', only:[:new, :create, :destroy]
+
     # As a user, I want to see all my bookings create a new booking and delete it if I no longer want the session
     # As a teacher, I want to see all my bookings, edit their status and delete them
     # As a teacher, I want to show all my skills, add new skills and delete skills I no longer possess

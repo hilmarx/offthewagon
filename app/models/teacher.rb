@@ -1,9 +1,9 @@
 class Teacher < ApplicationRecord
   before_save :full_name
   belongs_to :user
-  has_many :teacher_skills
+  has_many :teacher_skills, dependent: :destroy
   has_many :skills, through: :teacher_skills
-  has_many :bookings
+  has_many :bookings, dependent: :destroy
   validates :user_id, uniqueness: true
 
   # Pg Search Start
