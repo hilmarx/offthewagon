@@ -7,4 +7,5 @@ class Teacher < ApplicationRecord
   def top_skill
     self.teacher_skills.order(level: :desc).first
   end
+
 end

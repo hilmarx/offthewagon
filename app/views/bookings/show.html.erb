@@ -1,9 +1,10 @@
 <h1>Bookings#show</h1>
-<p><%= @booking.teacher %></p>
+<!--<p><%= @booking.teacher %></p>-->
 <p> <%= @booking.start_time %></p>
 <p> <%= @booking.end_time %></p>
+<p>Total: $<%= ((@booking.end_time - @booking.start_time) / 3600) * @booking.teacher.hourly_price %></p>
 
+<%= link_to "My Bookings", bookings_path %>
 
-<%= link_to "Home", root_path %>
 
 
