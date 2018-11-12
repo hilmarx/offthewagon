@@ -26,12 +26,15 @@
       <p><%= @booking.end_time.strftime("%H:%M") %></p>
     </div>
 
-        <div class='product-body'>
+    <div class='product-body'>
       <h3>Status:</h3>
       <p><%= @booking.status %></p>
     </div>
 
-
+        <div class='product-body'>
+      <h3>Price:</h3>
+      <p><%= ((@booking.end_time - @booking.start_time) / 3600) * @booking.teacher.hourly_price %></p>
+    </div>
   </div>
 
 
@@ -39,9 +42,12 @@
 
 <p><%= @booking.teacher %></p>
 <p> <%= @booking.start_time.strftime("%H:%M") %></p>
+<!--<p><%= @booking.teacher %></p>-->
+<p> <%= @booking.start_time %></p>
 <p> <%= @booking.end_time %></p>
+<p>Total: $<%= ((@booking.end_time - @booking.start_time) / 3600) * @booking.teacher.hourly_price %></p>
 
+<%= link_to "My Bookings", bookings_path %>
 
-<%= link_to "Home", root_path %>
 
 
