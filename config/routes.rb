@@ -11,7 +11,7 @@ Rails.application.routes.draw do
   # As a teacher, I want to edit my teacher profile
   resources 'bookings', only:[:new, :create, :index, :show, :edit, :update, :destroy]
 
-  resources 'teachers', only:[:index, :show, :edit, :update, :new, :create] do
+  resources 'teachers', only:[:index, :show, :edit, :update, :new, :create, :destroy] do
      resources 'bookings', only:[:new, :create, :destroy]
     # As a user, I want to see all my bookings create a new booking and delete it if I no longer want the session
     # As a teacher, I want to see all my bookings, edit their status and delete them

@@ -25,6 +25,13 @@
   <%=  render 'teacher_skills/form' %>
 
 
+
+<!-- For admin -->
+
+<% if current_user.admin %>
+<%= link_to "Destroy this biaaaatch", teacher_path(@teacher), method: :delete %>
+<% end %>
+
 <!-- Checks if user is signed in -->
 <% if user_signed_in? %>
   <!-- Validates that User cannot book himself -->
