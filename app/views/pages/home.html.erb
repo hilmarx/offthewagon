@@ -9,6 +9,7 @@
     <a class="btn btn-primary btn-lg"  href=" <%= teachers_path %>?query=javascript">JavaScript</a>
     <a class="btn btn-primary btn-lg"  href=" <%= teachers_path %>?query=python">Python</a>
     <a class="btn btn-primary btn-lg"  href=" <%= teachers_path %>?query=c">C</a>
+    <a class="btn btn-primary btn-lg"  href=" <%= teachers_path %>?query=swift">Swift</a>
   </div>
 </div>
 
@@ -22,47 +23,35 @@
       <div class="col-xs-4">
         <% skills = TeacherSkill.where(teacher_id: teacher.id) %>
         <% top_skill = skills.order('level DESC').first.try(:name) %>
-        <% if top_skill == 'ruby' %>
-          <div class="card ruby">
-        <% elsif top_skill == 'swift' %>
-          <div class="card swift">
-        <% elsif top_skill == 'c' %>
-          <div class="card c">
-        <% elsif top_skill == 'javascript' %>
-          <div class="card javascript">
-        <% elsif top_skill == 'python' %>
-          <div class="card python">
-        <% else %>
-          <div class="card no_skill">
-        <% end %>
-            <div class="skills">
 
-              <%= top_skill %>
+        <div class="card <%= top_skill %>">
 
-            </div>
-            <div class="card-description">
-              <h2>
-                <%= ['Innou Ridder', 'Ridder Inou', 'Ridder Rinou', 'Uonni Reddir'].sample  %>
-              </h2>
-            </div>
-            <img class="avatar" src="https://avatars2.githubusercontent.com/u/22443485?s=460&v=4">
-            <a class="card-link" href="<%= teacher_path(teacher) %>" ></a>
+          <div class="skills">
+            <%= top_skill %>
           </div>
+          <div class="card-description">
+            <h2>
+              <%= ['Innou Ridder', 'Ridder Inou', 'Ridder Rinou', 'Uonni Reddir'].sample  %>
+            </h2>
+          </div>
+          <img class="avatar" src="https://avatars2.githubusercontent.com/u/22443485?s=460&v=4">
+          <a class="card-link" href="<%= teacher_path(teacher) %>" ></a>
         </div>
-        <% end %>
       </div>
+      <% end %>
+    </div>
 
     <!-- List showing all Skills -->
     <h1>Most searched for Skills</h1>
     <ul>
       <div class="row">
         <% @skills.each do |skill| %>
-          <div class="col-xs-4">
-            <li>
-              <%= skill %>
-            </li>
-          </div>
-      <% end %>
+        <div class="col-xs-4">
+          <li>
+            <%= skill %>
+          </li>
+        </div>
+        <% end %>
       </div>
     </ul>
 
