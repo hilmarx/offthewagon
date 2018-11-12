@@ -12,7 +12,7 @@ class TeacherPolicy < ApplicationPolicy
   end
 
   def destroy?
-    is_admin
+    is_admin?
   end
 
   class Scope < Scope
@@ -27,7 +27,7 @@ class TeacherPolicy < ApplicationPolicy
     record.user == user || user.admin
   end
 
-  def is_admin
+  def is_admin?
     user.admin
   end
 end
