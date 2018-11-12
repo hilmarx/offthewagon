@@ -17,7 +17,7 @@ module Offthewagon
     config.load_defaults 5.2
 
     def method_missing(*args)
-      puts "ask your god...."
+      puts "Owain, stop looking at your phone!"
     end
 
     # Settings in config/environments/* take precedence over those specified here.

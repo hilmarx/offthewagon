@@ -13,6 +13,9 @@ gem 'faker'
 
 # Gemfile
 gem 'devise'
+# PG Search
+gem 'pg_search'
+
 
 
 gem 'autoprefixer-rails'
