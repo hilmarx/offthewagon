@@ -26,6 +26,7 @@ class TeachersController < ApplicationController
     @teachers = Teacher.all
     @teacher_skills = TeacherSkill.all
     @selected_teachers = []
+    @teachers = policy_scope(Teacher)
   end
 
   # works
