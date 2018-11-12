@@ -12,7 +12,9 @@
     <% if user_signed_in? %>
 
       <!-- If User is not a teacher, show "Become a teacher" -->
+      <% if policy(Teacher).create? %>
       <%= link_to "Become a teacher", new_teacher_path, class: "navbar-wagon-item navbar-wagon-link" if current_user.teacher.nil? %>
+      <% end %>
 
       <!-- Check Bookings -->
       <% if current_user %>

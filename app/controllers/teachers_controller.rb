@@ -5,12 +5,14 @@ class TeachersController < ApplicationController
   # works
   def new
     @teacher = Teacher.new
+    authorize @teacher
   end
 
   # works
   def create
     @teacher = Teacher.new(teacher_params)
     @teacher.user = current_user
+    authorize @teacher
     if @teacher.save
       redirect_to teacher_path(@teacher), notice: 'Profile succesfully created'
     else
@@ -30,16 +32,19 @@ class TeachersController < ApplicationController
   def show
     # set_teacher
     @teacher_skills = TeacherSkill.where(teacher_id: @teacher.id)
+    authorize @teacher
   end
 
   # works
   def edit
     # set_teacher
+    authorize @teacher
   end
 
   # works
   def update
     # set_teacher
+    authorize @teacher
     if @teacher.update(teacher_params)
       redirect_to teacher_path(@teacher), notice: 'Profile successfully updated'
     else

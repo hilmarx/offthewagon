@@ -1,7 +1,7 @@
 <h1>I'm the teacher#show page</h1>
 
 <p>Username: <%= @teacher.user.email %></p>
-<p>Id <%= @teacher.id %></p>
+<p>ID: <%= @teacher.id %></p>
 <h3>Skills: <% @teacher_skills.each do |skill| %></h3>
   <p> <%= skill %></p>
 <% end %>
