@@ -12,6 +12,9 @@ gem 'devise'
 gem "pundit"
 # PG Search
 gem 'pg_search'
+# Geocoder
+gem "geocoder"
+
 
 gem 'autoprefixer-rails'
 gem 'bootstrap-sass', '~> 3.3'

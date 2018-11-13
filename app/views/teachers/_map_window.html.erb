@@ -1,0 +1,16 @@
+<div class="mapboxgl-popup">
+  <div class="mapboxgl-popup-content">
+    <img class="avatar" src="https://avatars2.githubusercontent.com/u/22443485?s=460&v=4">
+    <a class="card-link" href="<%= teacher_path(teacher) %>" ></a>
+    <p> <%=  teacher.full_name  %></p>
+    <p> <%= teacher.hourly_price %>€ per hour </p>
+    <% teacher.teacher_skills.each do |skill| %>
+    <ul>
+      <p>Skills:</p>
+      <li>
+         <%= skill.name %>
+      </li>
+    </ul>
+    <% end %>
+  </div>
+</div>
