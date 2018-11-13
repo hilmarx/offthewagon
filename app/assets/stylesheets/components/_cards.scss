@@ -6,7 +6,6 @@
   border-radius: 8px;
   z-index: 1;
   background-color: white;
-
   color: black;
 
   .block-1 {
@@ -18,10 +17,14 @@
   }
   &:hover .block-1 {
     opacity: 1;
-    // color: rgb(200,200,200);
+
   }
 }
 
+a:link, a:visited {
+
+    text-decoration: none;
+}
 
 .ruby, .swift, .c, .javascript, .python {
   width: 80px;
@@ -104,10 +107,6 @@
   opacity: 0.85;
 }
 
-.card:hover .avatar {
-  opacity: 1;
-  transition: opacity 0.25s;
-}
 
 .skills {
   position: absolute;
@@ -119,44 +118,25 @@
   overflow: hidden;
 }
 
-// .card:hover .skills {
-//    font-size: 16px;
-//    transition: font-size 0.25s;
-//  }
 
 .card-description {
-  background-color: rgb(240,240,240);
+  background-color: #F9F2F2;
   display: flex;
   justify-content: center;
   align-items: center;
   height: 60px;
   font-size: 18px;
-  // position: absolute;
-  // bottom: 10px;
-  // left: 10px;
+  border-radius: 0px 0px 8px 8px;
+  text-decoration: none;
 }
 .card-description h2 {
   font-size: 24px;
+  text-decoration: none;
 }
 
 .card:hover .card-description h2 {
   font-size: 25px;
   transition: font-size 0.25s;
+  text-decoration: none;
 }
 
-.card-link {
-  // position: absolute;
-  // top: 0;
-  // bottom: 0;
-  // right: 0;
-  // width: 100%;
-  // z-index:-2;
-  // background: white;
-  // opacity: 0.75;
-  // border-radius: 8px;
-
-}
-
-.card-link:hover {
-  // opacity: 0.7;
-}
