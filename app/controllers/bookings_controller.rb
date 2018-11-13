@@ -14,15 +14,15 @@ class BookingsController < ApplicationController
     authorize @booking
   end
 
-  def edit
-    @booking = Booking.find(params[:id])
-  end
+  # def edit
+  #   @booking = Booking.find(params[:id])
+  # end
 
-  def update
-    booking = Booking.find(params[:id])
-    booking.update(booking_params)
-    redirect_to booking_path(booking)
-  end
+  # def update
+  #   booking = Booking.find(params[:id])
+  #   booking.update(booking_params)
+  #   redirect_to booking_path(booking)
+  # end
 
   def new
    @teacher = Teacher.find(params[:teacher_id])
