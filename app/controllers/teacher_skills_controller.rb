@@ -43,6 +43,7 @@ class TeacherSkillsController < ApplicationController
   end
 
 
+
   def destroy
     @teacher = Teacher.find(params[:teacher_id])
     # dont know why, but it is the way it is
