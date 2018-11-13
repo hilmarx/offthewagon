@@ -1,6 +1,22 @@
 <%= simple_form_for(@teacher) do |f| %>
+<div class="row">
+          <div class="col-xs-6 col-xs-offset-3">
   <%= f.input :hourly_price, label: 'Hourly price (USD)', placeholder: "25" %>
+</div>
+</div>
+<div class="row">
+          <div class="col-xs-6 col-xs-offset-3">
   <%= f.input :available_from %>
+</div>
+</div>
+<div class="row">
+          <div class="col-xs-6 col-xs-offset-3">
   <%= f.input :available_to %>
-  <%= f.submit %>
+</div>
+</div>
+<div class="row">
+          <div class="col-xs-6 col-xs-offset-3">
+  <%= f.button :submit, class: 'btn btn-primary' %>
+</div>
+</div>
 <% end %>
