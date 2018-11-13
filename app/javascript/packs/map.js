@@ -30,11 +30,7 @@ if (mapElement) { // only build a map if there's a div#map to inject into
     .addTo(map);
   });
 
-  map.addControl(new MapboxGeocoder({
-    accessToken: mapboxgl.accessToken
-  }));
-
-  const findBounds = (coordatinates) => {
+  const findBounds = coordatinates => {
   let longitudes = coordatinates.map(coordinate => coordinate.lng).sort((a, b) => a - b);
   let latitudes = coordatinates.map(coordinate => coordinate.lat).sort((a, b) => a - b);
   return [[longitudes[longitudes.length - 1], latitudes[latitudes.length - 1]], [longitudes[0], latitudes[0]]];
@@ -49,6 +45,11 @@ if (mapElement) { // only build a map if there's a div#map to inject into
     bounds = findBounds(markers);
     map.fitBounds(bounds, {duration: 0, padding: 75});
   };
+
+  map.addControl(new MapboxGeocoder({
+    accessToken: mapboxgl.accessToken
+  }));
+
 
 
   addressInput = document.getElementById('teacher_address');

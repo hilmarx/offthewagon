@@ -7,9 +7,10 @@
     <!-- Beginning of Teacher Card -->
     <div class="container">
       <div class="teacher-container">
-        <% if @teachers = [] %>
+        <% if @teachers.length == 0 %>
           <h3>No teachers found, go back to home page by clicking <%= link_to "here", root_path %> </h3>
-        <% end %>
+        <% else %>
+
         <div class="row">
           <% @teachers.each do |teacher| %>
           <div class="col-xs-4">
@@ -33,6 +34,7 @@
         </div>
         <% end %>
       </div>
+        <% end %>
     </div>
   </div>
   <!-- End of Teacher Card -->

@@ -43,7 +43,6 @@ class TeachersController < ApplicationController
     end
     # Geo coding end
     @teacher_skills = TeacherSkill.all
-    @selected_teachers = []
     policy_scope(Teacher)
   end
 
