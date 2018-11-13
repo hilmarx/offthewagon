@@ -26,14 +26,14 @@
       <!-- Avatar with the remainding Links as dropdown list -->
       <div class="navbar-wagon-item">
         <div class="dropdown">
-          <% if current_user.photo != nil %>
-          <%= image_tag current_user.photo, class: 'avatar-navbar dropdown-toggle', id: 'navbar-wagon-menu', data: { toggle: 'dropdown' } %>
+          <% if current_user.teacher.try(:photo).present? %>
+          <%= cl_image_tag current_user.teacher.photo, height: 300, width: 400, class: 'avatar-navbar dropdown-toggle', id: 'navbar-wagon-menu', data: { toggle: 'dropdown' } %>
           <% else %>
           <%= image_tag 'https://res.cloudinary.com/dftybtoej/image/upload/v1542030994/empty_profile.jpg', class: 'avatar-navbar dropdown-toggle', id: 'navbar-wagon-menu', data: { toggle: 'dropdown' } %>
           <% end %>
 
 
-          <img src="https://kitt.lewagon.com/placeholder/users/ssaunier" class="avatar-navbar dropdown-toggle" id="navbar-wagon-menu" data-toggle="dropdown">
+          <!--<1img src="https://kitt.lewagon.com/placeholder/users/ssaunier" class="avatar-navbar dropdown-toggle" id="navbar-wagon-menu" data-toggle="dropdown">-->
           <ul class="dropdown-menu dropdown-menu-right navbar-wagon-dropdown-menu">
             <!-- Show user Profile -->
             <!-- We don't have a route to simply display a users profile -->
@@ -131,7 +131,6 @@
   </div>
 
 </div>
-
 
 
     <!-- Profile picture with dropdown list -->
