@@ -1,5 +1,17 @@
+<div class="wrapper">
+  <div class="container">
 <%= simple_form_for [@teacher, @new_skill] do |f| %>
+<div class="row">
+          <div class="col-xs-6 col-xs-offset-3">
   <%= f.association :skill, as: :select %>
-  <%= f.input :level %>
-  <%= f.submit %>
+</div>
+</div>
+<div class="row">
+          <div class="col-xs-6 col-xs-offset-3">
+  <%= f.input :level, label: 'Level (1-5)' %>
+</div>
+</div>
+  <%= f.button :submit, class: 'btn btn-primary' %>
 <% end %>
+</div>
+</div>
