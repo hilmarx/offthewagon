@@ -1,46 +1,61 @@
 <div class="wrapper">
-  <div class="container">
+    <div class="title">
+      <h1 class="text-center">Select the teacher you would like to book</h1>
+    </div>
+  <div class="flex-container">
     <!-- Container Start -->
 
-    <h1>Select the teacher you would like to book:</h1>
 
     <!-- Beginning of Teacher Card -->
-    <div class="row">
-      <% if params[:query].present? %>
-        <% @selected_teachers = Teacher.pg_search(params[:query]) %>
-      <% else %>
-        <% @selected_teachers = @teachers %>
-      <% end %>
+    <div class="container">
+      <div class="teacher-container">
 
-      <% @selected_teachers.each do |teacher| %>
-      <div class="col-xs-4">
-        <% skills = TeacherSkill.where(teacher_id: teacher.id) %>
-        <% top_skill = skills.order('level DESC').first.try(:name) %>
+        <% if @teachers.length == 0 %>
+          <h3>No teachers found, go back to home page by clicking <%= link_to "here", root_path %> </h3>
+        <% else %>
+        <h3>Select from <%= @teachers.length %> Teachers</h3>
 
-        <div class="card <%= top_skill %>">
+        <div class="row">
+          <% @teachers.each do |teacher| %>
+          <div class="col-xs-4">
+            <% skills = TeacherSkill.where(teacher_id: teacher.id) %>
+            <% top_skill = skills.order('level DESC').first.try(:name) %>
 
-            <div class="skills">
-             <%= top_skill %>
-           </div>
+            <div class="card <%= top_skill %>">
 
-           <div class="card-description">
-            <h2>
-              <%= teacher.full_name %>
-            </h2>
-          </div>
+              <div class="skills">
+               <%= top_skill %>
+             </div>
+
+             <div class="card-description">
+              <h2>
+                <%= teacher.full_name %>
+              </h2>
+            </div>
           <% if teacher.user.photo != nil %>
           <%= image_tag teacher.user.photo, class: 'avatar' %>
           <% else %>
           <%= image_tag 'https://res.cloudinary.com/dftybtoej/image/upload/v1542030994/empty_profile.jpg', class: 'avatar' %>
           <% end %>
           <a class="card-link" href="<%= teacher_path(teacher) %>" ></a>
+          </div>
         </div>
+        <% end %>
       </div>
-      <% end %>
+        <% end %>
     </div>
-    <!-- End of Teacher Card -->
-
-
-    <!-- Container end -->
   </div>
+  <!-- End of Teacher Card -->
+  <!-- Mapbox Maps -->
+  <div
+  id="map"
+  style="height: 100vh;"
+  data-markers="<%= @markers.to_json %>"
+  >
+</div>
+</div>
+
+
+<!-- Container end -->
+
 </div>
