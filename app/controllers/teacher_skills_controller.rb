@@ -29,6 +29,7 @@ class TeacherSkillsController < ApplicationController
   def create
     @teacher_skill = TeacherSkill.new(teacher_skill_params)
     @teacher = Teacher.find(params[:teacher_id])
+    authorize @teacher
     @teacher_skill.teacher = @teacher
     if @teacher_skill.save
       redirect_to teacher_path(@teacher)
@@ -39,9 +40,10 @@ class TeacherSkillsController < ApplicationController
 
 
   def destroy
-    @teacher = Teacher.find(params[:id])
+    @teacher = Teacher.find(params[:teacher_id])
     # dont know why, but it is the way it is
-    @teacher_skill = TeacherSkill.find(params[:teacher_id])
+    @teacher_skill = TeacherSkill.find(params[:id])
+    authorize @teacher_skill
     @teacher_skill.destroy
     redirect_to teacher_path(@teacher)
   end

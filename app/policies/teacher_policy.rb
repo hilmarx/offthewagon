@@ -11,6 +11,10 @@ class TeacherPolicy < ApplicationPolicy
     is_owner_or_admin?
   end
 
+  def destroy?
+    is_admin?
+  end
+
   class Scope < Scope
     def resolve
       scope.all
@@ -21,5 +25,9 @@ class TeacherPolicy < ApplicationPolicy
 
   def is_owner_or_admin?
     record.user == user || user.admin
+  end
+
+  def is_admin?
+    user.admin
   end
 end

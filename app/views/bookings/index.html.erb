@@ -30,7 +30,15 @@
     <h3>Status:</h3>
     <p><%= booking.status %></p>
     <% if booking.status == "complete" %>
-    <p>total price: $<%= ((booking.end_time - booking.start_time) / 3600) * booking.teacher.hourly_price %></p>
+      <p>total price: $<%= ((booking.end_time - booking.start_time) / 3600) * booking.teacher.hourly_price %></p>
+      <% end %>
+      <%= link_to 'Cancel', cancel_path(booking), method: :patch unless booking.status == "cancelled" || booking.status == "complete" %>
+      <% if booking.status == "cancelled" || booking.status == "complete" %>
+      <!-- Lets leave that out for now -->
+      <%#= link_to "Remove", booking_path(booking.id), method: :delete %>
+      <br>
+      <br>
+      <br>
     <% end %>
   </div>
 
