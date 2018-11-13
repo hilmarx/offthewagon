@@ -3,9 +3,11 @@
 <div class="container text-center">
   <div class="profile_card">
     <h1><%= @teacher.full_name %></h1>
-    <%= image_tag 'stock_photo.jpg', class: "profile_photo" %>
-    <p>Email: <%= @teacher.user.email %></p>
-    <p>ID: <%= @teacher.id %></p>
+    <% if @teacher.user.photo != nil %>
+    <%= image_tag @teacher.user.photo, class: "profile_photo" %>
+    <% else %>
+    <%= image_tag 'https://res.cloudinary.com/dftybtoej/image/upload/v1542031690/coming_soon.jpg', class: "profile_photo" %>
+    <% end %>
 
   <h3>Skills:</h3>
    <% @teacher_skills.each do |skill| %>
@@ -19,10 +21,20 @@
       <% when 5 then level="God" %>
     <% else level="wtf?" %>
     <% end %>
-    <p><%= level.capitalize %> <%= link_to "delete", teacher_teacher_skill_path(@teacher, skill), method: :delete %></p>
+    <p><%= level.capitalize %>
+      <% if user_signed_in? %>
+        <% if @teacher.user.id == current_user.id || current_user.admin %>
+            <%= link_to "delete", teacher_teacher_skill_path(@teacher, skill), method: :delete  %>
+        <% end %>
+      <% end %>
+    </p>
 
   <% end %>
-  <%=  render 'teacher_skills/form' %>
+  <% if user_signed_in? %>
+    <% if @teacher.user.id == current_user.id || current_user.admin %>
+      <%=  render 'teacher_skills/form' %>
+    <% end %>
+  <% end %>
 
 
 
