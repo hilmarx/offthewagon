@@ -1,63 +1,112 @@
 .card {
-  height: 175px;
-  text-shadow: 0 1px 3px rgba(0,0,0,0.6);
-  background-size: contain !important;
-  background-position: center;
+  // height: 175px;
   position: relative;
-  margin: 5px 0 5px 0;
-  box-shadow: 2px 2px 2px black;
-  border: solid 1px black;
-  background-color: rgb(250, 250, 250);
-  background-image: image-url('logo_wide.png');
+  margin: 10px 0 10px 0;
+  box-shadow: 1px 1px 2px rgba(0,0,0,0.1);
+  border-radius: 8px;
+  z-index: 1;
+  background-color: white;
+
+  color: black;
+
+  .block-1 {
+    height: 150px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity: 0.7;
+  }
+  &:hover .block-1 {
+    opacity: 1;
+    // color: rgb(200,200,200);
+  }
 }
 
-.card:hover {
-  margin: 0 0 10px 0;
-  background-size: cover !important;
+
+.ruby, .swift, .c, .javascript, .python {
+  width: 80px;
+  height: 80px;
 }
 
-.ruby {
+
+.ruby  {
+
   background-image: image-url('ruby-plain.svg');
+  background-repeat: no-repeat;
+  background-size: 80px;
+  background-position: center;
+
 }
 
 .swift {
-  background-image: image-url('swift-plain.svg');
+
+    background: image-url('swift-original.svg');
+    background-repeat: no-repeat;
+    background-size: 80px;
+    background-position: center;
 }
 
+
+
 .c {
+
   background-image: image-url('c-plain.svg');
+  background-repeat: no-repeat;
+  background-size: 80px;
+  background-position: center;
+
 }
 
 .javascript {
+
   background-image: image-url('javascript-plain.svg');
+  background-repeat: no-repeat;
+  background-size: 80px;
+  background-position: center;
 }
 
 .python {
-  background-image: image-url('python.png');
+
+  background-image: image-url('python-plain.svg');
+  background-repeat: no-repeat;
+  background-size: 80px;
+  background-position: center;
+
 }
 
 .nil {
-  background-image: image-url('logo.png');
+
+  background-image: image-url('logo.png'), linear-gradient(-225deg, rgba(0,101,168,0.6) 0%, rgba(0,36,61,0.6) 50%);
+  opacity: 0.2;
+  background-repeat: no-repeat;
+  background-size: 80px;
+  background-position: center;
+
 }
 
 .card:hover {
-  box-shadow: 4px 4px 4px rgb(116, 163, 156);
-  border-style: none;
+  box-shadow: 1.5px 1.5px 1.5px rgba(116, 116, 116, 0.4);
+  transition: box-shadow 0.25s;
 }
 
 .avatar {
   position: absolute;
   right: 10px;
   top: 10px;
-  width: 60px;
-  height: 60px;
+  width: 48px;
+  height: 48px;
+  transition: width 0.25s, height 0.25s;
   border-radius: 50%;
+  border-style: solid;
+  border-color: white;
+  border-width: 4px;
   object-fit: cover;
+  opacity: 0.85;
 }
 
 .card:hover .avatar {
-  width: 70px;
-  height: 70px;
+  opacity: 1;
+  transition: opacity 0.25s;
 }
 
 .skills {
@@ -70,33 +119,44 @@
   overflow: hidden;
 }
 
-.card:hover .skills {
-  font-size: 17px;
-}
+// .card:hover .skills {
+//    font-size: 16px;
+//    transition: font-size 0.25s;
+//  }
 
 .card-description {
-  position: absolute;
-  bottom: 10px;
-  left: 10px;
+  background-color: rgb(240,240,240);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 60px;
+  font-size: 18px;
+  // position: absolute;
+  // bottom: 10px;
+  // left: 10px;
 }
 .card-description h2 {
   font-size: 24px;
 }
 
 .card:hover .card-description h2 {
-  font-size: 28px;
+  font-size: 25px;
+  transition: font-size 0.25s;
 }
 
 .card-link {
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  right: 0;
-  width: 100%;
-  z-index: 2;
-  background: black;
-  opacity: 0.2;
+  // position: absolute;
+  // top: 0;
+  // bottom: 0;
+  // right: 0;
+  // width: 100%;
+  // z-index:-2;
+  // background: white;
+  // opacity: 0.75;
+  // border-radius: 8px;
+
 }
+
 .card-link:hover {
-  opacity: 0;
+  // opacity: 0.7;
 }
