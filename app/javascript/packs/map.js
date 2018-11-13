@@ -20,15 +20,7 @@ if (mapElement) { // only build a map if there's a div#map to inject into
       .addTo(map);
   });
 
-  if (markers.length === 0) {
-    map.setZoom(1);
-  } else if (markers.length === 1) {
-    map.setZoom(14);
-    map.setCenter([markers[0].lng, markers[0].lat]);
-  } else {
-    bounds = findBounds(markers);
-    map.fitBounds(bounds, {duration: 0, padding: 75});
-  };
+
 
   markers.forEach((marker) => {
   new mapboxgl.Marker()
@@ -47,6 +39,17 @@ if (mapElement) { // only build a map if there's a div#map to inject into
   let latitudes = coordatinates.map(coordinate => coordinate.lat).sort((a, b) => a - b);
   return [[longitudes[longitudes.length - 1], latitudes[latitudes.length - 1]], [longitudes[0], latitudes[0]]];
   };
+
+  if (markers.length === 0) {
+    map.setZoom(1);
+  } else if (markers.length === 1) {
+    map.setZoom(14);
+    map.setCenter([markers[0].lng, markers[0].lat]);
+  } else {
+    bounds = findBounds(markers);
+    map.fitBounds(bounds, {duration: 0, padding: 75});
+  };
+
 
   addressInput = document.getElementById('teacher_address');
 

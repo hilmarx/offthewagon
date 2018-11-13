@@ -7,13 +7,11 @@
     <!-- Beginning of Teacher Card -->
     <div class="container">
       <div class="teacher-container">
-        <% if params[:query].present? %>
-        <% @selected_teachers = @teachers.pg_search(params[:query]) %>
-        <% else %>
-        <% @selected_teachers = @teachers %>
+        <% if @teachers = [] %>
+          <h3>No teachers found, go back to home page by clicking <%= link_to "here", root_path %> </h3>
         <% end %>
         <div class="row">
-          <% @selected_teachers.each do |teacher| %>
+          <% @teachers.each do |teacher| %>
           <div class="col-xs-4">
             <% skills = TeacherSkill.where(teacher_id: teacher.id) %>
             <% top_skill = skills.order('level DESC').first.try(:name) %>

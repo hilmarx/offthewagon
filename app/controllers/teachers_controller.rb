@@ -29,6 +29,11 @@ class TeachersController < ApplicationController
     else
       @teachers = Teacher.all
     end
+
+    if params[:query].present?
+      @teachers = @teachers.pg_search(params[:query])
+    end
+
     @markers = @teachers.map do |teacher|
       {
         lng: teacher.longitude,
