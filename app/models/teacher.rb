@@ -1,4 +1,6 @@
 class Teacher < ApplicationRecord
+  geocoded_by :address
+  after_validation :geocode, if: :will_save_change_to_address?
   before_save :full_name
   belongs_to :user
   has_many :teacher_skills, dependent: :destroy
