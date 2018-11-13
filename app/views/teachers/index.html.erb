@@ -8,7 +8,7 @@
     <div class="container">
       <div class="teacher-container">
         <% if params[:query].present? %>
-        <% @selected_teachers = Teacher.pg_search(params[:query]) %>
+        <% @selected_teachers = @teachers.pg_search(params[:query]) %>
         <% else %>
         <% @selected_teachers = @teachers %>
         <% end %>

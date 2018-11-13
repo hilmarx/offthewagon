@@ -24,7 +24,11 @@ class TeachersController < ApplicationController
   # works
   def index
     # Geo coding start
-    @teachers = Teacher.where.not(latitude: nil, longitude: nil)
+    if params[:location].present?
+      @teachers = Teacher.near(params[:location], 60)
+    else
+      @teachers = Teacher.all
+    end
     @markers = @teachers.map do |teacher|
       {
         lng: teacher.longitude,
@@ -32,11 +36,10 @@ class TeachersController < ApplicationController
         infoWindow: { content: render_to_string(partial: "/teachers/map_window", locals: { teacher: teacher }) }
       }
     end
-    @teachers = Teacher.all
     # Geo coding end
     @teacher_skills = TeacherSkill.all
     @selected_teachers = []
-    @teachers = policy_scope(Teacher)
+    policy_scope(Teacher)
   end
 
 
