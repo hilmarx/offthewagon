@@ -1,13 +1,21 @@
-<h1>New Booking</h1>
+<div class="container" style="text-align: center">
+  <h1>New Booking</h1>
 
-<div class="container">
+  <%= simple_form_for([@teacher, @booking]) do |f| %>
   <div class="row">
-    <div class="col-xs-12">
-      <%= simple_form_for([@teacher, @booking]) do |f| %>
-        <%= f.input :start_time %>
-        <%= f.input :end_time %>
-        <%= f.submit %>
-      <% end %>
+    <div class="col-xs-6 col-xs-offset-3">
+      <%= f.input :start_time %>
     </div>
   </div>
+  <div class="row">
+    <div class="col-xs-6 col-xs-offset-3">
+      <%= f.input :end_time %>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-xs-6 col-xs-offset-3">
+      <%= f.button :submit, class: 'btn btn-primary' %>
+    </div>
+  </div>
+  <% end %>
 </div>

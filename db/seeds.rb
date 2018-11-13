@@ -78,7 +78,7 @@ o.save!
 h = User.new(email: "h@h.h", password: "hhhhhh", first_name: "Hilmar", last_name: "Onyx", photo: 'https://res.cloudinary.com/dftybtoej/image/upload/v1542027237/stock_photo.jpg')
 h.save!
 
-Teacher.new(user_id: j.id, hourly_price: Faker::Number.number(3), available_from: Date.today, available_to: (Date.today + rand(100)), address: 'Seminyak, Bali').save!
+tj = Teacher.new(user_id: j.id, hourly_price: Faker::Number.number(3), available_from: Date.today, available_to: (Date.today + rand(100)), address: 'Seminyak, Bali').save!
 
 Teacher.new(user_id: w.id, hourly_price: Faker::Number.number(3), available_from: Date.today, available_to: (Date.today + rand(100)), address: 'Deus, Canggu, Bali').save!
 
