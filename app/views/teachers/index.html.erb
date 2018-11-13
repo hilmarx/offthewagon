@@ -1,11 +1,9 @@
 <div class="wrapper">
-    <div class="title">
-      <h1 class="text-center">Select the teacher you would like to book</h1>
-    </div>
+  <div class="title">
+    <h1 class="text-center">Select the teacher you would like to book</h1>
+  </div>
   <div class="flex-container">
     <!-- Container Start -->
-
-
     <!-- Beginning of Teacher Card -->
 
     <div class="container">
@@ -18,34 +16,24 @@
 
         <div class="row">
           <% @teachers.each do |teacher| %>
-          <div class="col-xs-4">
-            <% skills = TeacherSkill.where(teacher_id: teacher.id) %>
-            <% top_skill = skills.order('level DESC').first.try(:name) %>
-
-            <div class="card <%= top_skill %>">
-
-              <div class="skills">
-               <%= top_skill %>
-             </div>
-
-             <div class="card-description">
-              <h2>
-                <%= teacher.full_name %>
-              </h2>
-            </div>
-          <% if teacher.user.photo != nil %>
-          <%= image_tag teacher.user.photo, class: 'avatar' %>
-          <% else %>
-          <%= image_tag 'https://res.cloudinary.com/dftybtoej/image/upload/v1542030994/empty_profile.jpg', class: 'avatar' %>
-          <% end %>
-          <a class="card-link" href="<%= teacher_path(teacher) %>" ></a>
+          <div class="col-xs-12 col-sm-6">
+            <%= render "teachers/card", teacher: teacher %>
           </div>
+          <!-- col div -->
+
+          <% end %>
+        <!-- Each end -->
+
         </div>
+        <!-- Row div -->
+
         <% end %>
-      </div>
-        <% end %>
+        <!-- If end -->
+
     </div>
+    <!-- teacher cointainer div -->
   </div>
+  <!-- container -->
 
   <!-- End of Teacher Card -->
   <!-- Mapbox Maps -->
@@ -54,10 +42,9 @@
   style="height: 100vh;"
   data-markers="<%= @markers.to_json %>"
   >
+  </div>
+  <!-- flex container -->
 </div>
+<!-- wrapper -->
 </div>
 
-
-<!-- Container end -->
-
-</div>

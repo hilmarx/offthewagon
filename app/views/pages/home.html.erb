@@ -35,41 +35,7 @@
     <div class="row">
       <% @teachers.each do |teacher| %>
       <div class="col-xs-4">
-        <% skills = TeacherSkill.where(teacher_id: teacher.id) %>
-        <% top_skill = skills.order('level DESC').first.try(:name) %>
-
-        <%= link_to teacher_path(teacher) do %>
-
-          <div class="card <%#= top_skill %>">
-            <div class="block-1">
-
-              <div class="skills">
-                <%= top_skill %>
-              </div>
-
-              <div class="image-wrapper">
-                <div class="<%= top_skill %> "></div>
-              </div>
-
-
-              <% if teacher.user.photo != nil %>
-              <%= image_tag teacher.user.photo, class: 'avatar' %>
-              <% else %>
-              <%= image_tag 'https://res.cloudinary.com/dftybtoej/image/upload/v1542030994/empty_profile.jpg', class: 'avatar' %>
-              <% end %>
-
-              <!-- <a class="card-link" href="<%= teacher_path(teacher) %>" ></a> -->
-            </div>
-
-
-            <div class="card-description">
-              <div>
-                <%= teacher.full_name %>
-              </div>
-            </div>
-          </div>
-        <% end %>
-
+        <%= render "teachers/card", teacher: teacher %>
       </div>
       <% end %>
     </div>
