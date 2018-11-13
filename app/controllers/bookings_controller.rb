@@ -14,6 +14,16 @@ class BookingsController < ApplicationController
     authorize @booking
   end
 
+  def edit
+    @booking = Booking.find(params[:id])
+  end
+
+  def update
+    booking = Booking.find(params[:id])
+    booking.update(booking_params)
+    redirect_to booking_path(booking)
+  end
+
   def new
    @teacher = Teacher.find(params[:teacher_id])
    @booking = Booking.new
@@ -49,12 +59,11 @@ def create
   @booking = Booking.new(booking_params)
   @booking.user = current_user
   @booking.teacher_id = @teacher.id
-  authorize @booking
   if @booking.save
+    authorize @booking
     redirect_to booking_path(@booking)
   else
     render :new
-    end
   end
 end
 
@@ -79,6 +88,6 @@ def booking_time_params
   params.require(:booking).permit(:start_time, :end_time)
 end
 
-
+end
 #controller, routes, added routing buttons to teacher for new booking, teacher index/user index of bookings
 
