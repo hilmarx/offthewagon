@@ -12,18 +12,24 @@
   </div>
 
   <div class='product-body'>
+    <%  if booking.start_time.present? %>
     <h3>Date:</h3>
     <p><%= booking.start_time.strftime("%d-%b-%Y") %></p>
+    <% end %>
   </div>
 
   <div class='product-body'>
+    <%  if booking.start_time.present? %>
     <h3>Start time:</h3>
     <p><%= booking.start_time.strftime("%H:%M") %></p>
+    <% end %>
   </div>
 
   <div class='product-body'>
+    <%  if booking.end_time.present? %>
     <h3>End time:</h3>
     <p><%= booking.end_time.strftime("%H:%M") %></p>
+    <% end %>
   </div>
 
   <div class='product-body'>
@@ -66,16 +72,22 @@
       <p><%= booking.user.first_name %></p>
     </div>
     <div class='product-body'>
+      <%  if booking.start_time.present? %>
       <h3>Date:</h3>
       <p><%= booking.start_time.strftime("%d-%b-%Y") %></p>
+      <% end %>
     </div>
     <div class='product-body'>
+      <%  if booking.start_time.present? %>
       <h3>Start time:</h3>
       <p><%= booking.start_time.strftime("%H:%M") %></p>
+      <% end %>
     </div>
     <div class='product-body'>
+      <%  if booking.end_time.present? %>
       <h3>End time:</h3>
       <p><%= booking.end_time.strftime("%H:%M") %></p>
+      <% end %>
     </div>
     <div class='product-body'>
       <h3>Status:</h3>
