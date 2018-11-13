@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html>
- <div class=”main-container”>
+
   <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -12,25 +12,25 @@
   </head>
   <body>
 
-    <%= render 'shared/navbar' %>
-    <%= render 'shared/flashes' %>
+    <div class="main-container">
+      <%= render 'shared/navbar' %>
+      <%= render 'shared/flashes' %>
 
 
-    <%= yield %>
-    <%= javascript_include_tag 'application' %>
-    <%= javascript_pack_tag 'application' %>
-    <%= javascript_pack_tag "map" %>
-
-
+      <%= yield %>
+      <%= javascript_include_tag 'application' %>
+      <%= javascript_pack_tag 'application' %>
+      <%= javascript_pack_tag "map" %>
 
 
     </div>
-  </body>
-  <footer>
+      <footer>
         <p>
           Created by the <b>Dream Team</b> @LeWagon, Bali, Indo
         </p>
-  </footer>
+      </footer>
+
+  </body>
 </html>
 
 
