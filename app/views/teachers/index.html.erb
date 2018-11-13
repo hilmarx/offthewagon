@@ -1,5 +1,7 @@
 <div class="wrapper">
-    <h1 class="text-center">Select the teacher you would like to book:</h1>
+    <div class="title">
+      <h1 class="text-center">Select the teacher you would like to book</h1>
+    </div>
   <div class="flex-container">
     <!-- Container Start -->
 
@@ -7,9 +9,11 @@
     <!-- Beginning of Teacher Card -->
     <div class="container">
       <div class="teacher-container">
+
         <% if @teachers.length == 0 %>
           <h3>No teachers found, go back to home page by clicking <%= link_to "here", root_path %> </h3>
         <% else %>
+        <h3>Select from <%= @teachers.length %> Teachers</h3>
 
         <div class="row">
           <% @teachers.each do |teacher| %>
