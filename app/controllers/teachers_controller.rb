@@ -25,10 +25,11 @@ class TeachersController < ApplicationController
   def index
     # Geo coding start
     @teachers = Teacher.where.not(latitude: nil, longitude: nil)
-    @markers = @teachers.map do |teach|
+    @markers = @teachers.map do |teacher|
       {
-        lng: teach.longitude,
-        lat: teach.latitude
+        lng: teacher.longitude,
+        lat: teacher.latitude,
+        infoWindow: { content: render_to_string(partial: "/teachers/map_window", locals: { teacher: teacher }) }
       }
     end
     @teachers = Teacher.all
