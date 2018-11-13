@@ -1,0 +1,13 @@
+<h1>Edit Booking</h1>
+
+<div class="container">
+  <div class="row">
+    <div class="col-xs-12">
+      <%= simple_form_for([@teacher, @booking]) do |f| %>
+        <%= f.input :start_time %>
+        <%= f.input :end_time %>
+        <%= f.submit %>
+      <% end %>
+    </div>
+  </div>
+</div>
