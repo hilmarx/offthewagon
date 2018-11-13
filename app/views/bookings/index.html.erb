@@ -96,7 +96,9 @@
     <div class='product-body'>
       <div class='product-body'>
         <% if booking.status == "complete" %>
+        <% if booking.end_time.present? && booking.start_time.present? %>
         <p>total price: $<%= ((booking.end_time - booking.start_time) / 3600) * booking.teacher.hourly_price %></p>
+        <% end %>
         <% end %>
       </div>
       <div class='product-body'>
