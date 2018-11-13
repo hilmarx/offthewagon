@@ -8,6 +8,8 @@ class Teacher < ApplicationRecord
   has_many :bookings, dependent: :destroy
   validates :user_id, uniqueness: true
 
+  mount_uploader :photo, PhotoUploader
+
   # Pg Search Start
   # Search by Teacher.user name and skill category
   include PgSearch
@@ -20,6 +22,7 @@ class Teacher < ApplicationRecord
       tsearch: { prefix: true } # <-- now `superman batm` will return something!
     }
   # Pg Search End
+
 
   def top_skill
     self.teacher_skills.order(level: :desc).first

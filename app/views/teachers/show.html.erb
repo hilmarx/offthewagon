@@ -6,7 +6,7 @@
     <% if @teacher.user.photo != nil %>
     <%= image_tag @teacher.user.photo, class: "profile_photo" %>
     <% else %>
-    <%= image_tag 'https://res.cloudinary.com/dftybtoej/image/upload/v1542031690/coming_soon.jpg', class: "profile_photo" %>
+    <%= cl_image_tag @teacher.photo, height: 300, width: 400, crop: :fill %>
     <% end %>
 
   <h3>Skills:</h3>
