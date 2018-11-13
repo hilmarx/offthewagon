@@ -1,49 +1,53 @@
 <div class="wrapper">
-  <div class="container">
+    <h1 class="text-center">Select the teacher you would like to book:</h1>
+  <div class="flex-container">
     <!-- Container Start -->
 
-    <h1>Select the teacher you would like to book:</h1>
 
     <!-- Beginning of Teacher Card -->
-    <div class="row">
-      <% if params[:query].present? %>
+    <div class="container">
+      <div class="teacher-container">
+        <% if params[:query].present? %>
         <% @selected_teachers = Teacher.pg_search(params[:query]) %>
-      <% else %>
+        <% else %>
         <% @selected_teachers = @teachers %>
-      <% end %>
+        <% end %>
+        <div class="row">
+          <% @selected_teachers.each do |teacher| %>
+          <div class="col-xs-4">
+            <% skills = TeacherSkill.where(teacher_id: teacher.id) %>
+            <% top_skill = skills.order('level DESC').first.try(:name) %>
 
-      <% @selected_teachers.each do |teacher| %>
-      <div class="col-xs-4">
-        <% skills = TeacherSkill.where(teacher_id: teacher.id) %>
-        <% top_skill = skills.order('level DESC').first.try(:name) %>
+            <div class="card <%= top_skill %>">
 
-        <div class="card <%= top_skill %>">
+              <div class="skills">
+               <%= top_skill %>
+             </div>
 
-            <div class="skills">
-             <%= top_skill %>
-           </div>
-
-           <div class="card-description">
-            <h2>
-              <%= teacher.full_name %>
-            </h2>
+             <div class="card-description">
+              <h2>
+                <%= teacher.full_name %>
+              </h2>
+            </div>
+            <img class="avatar" src="https://avatars2.githubusercontent.com/u/22443485?s=460&v=4">
+            <a class="card-link" href="<%= teacher_path(teacher) %>" ></a>
           </div>
-          <img class="avatar" src="https://avatars2.githubusercontent.com/u/22443485?s=460&v=4">
-          <a class="card-link" href="<%= teacher_path(teacher) %>" ></a>
         </div>
+        <% end %>
       </div>
-      <% end %>
     </div>
-    <!-- End of Teacher Card -->
-    <!-- Mapbox Maps -->
-    <div class="col-xs-4"
-      id="map"
-      style="width: 100%;
-      height: 600px;"
-      data-markers="<%= @markers.to_json %>"
-    ></div>
-
-
-    <!-- Container end -->
   </div>
+  <!-- End of Teacher Card -->
+  <!-- Mapbox Maps -->
+  <div
+  id="map"
+  style="height: 100vh;"
+  data-markers="<%= @markers.to_json %>"
+  >
+</div>
+</div>
+
+
+<!-- Container end -->
+
 </div>

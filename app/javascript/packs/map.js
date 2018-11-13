@@ -1,4 +1,5 @@
 require('mapbox-gl/dist/mapbox-gl.css')
+require('@mapbox/mapbox-gl-geocoder/dist/mapbox-gl-geocoder.css')
 const mapboxgl = require('mapbox-gl/dist/mapbox-gl.js');
 
 const mapElement = document.getElementById('map');
@@ -6,8 +7,9 @@ const mapElement = document.getElementById('map');
 if (mapElement) { // only build a map if there's a div#map to inject into
   mapboxgl.accessToken = process.env.MAPBOX_API_KEY; // API key from `.env`
   const map = new mapboxgl.Map({
-    container: 'map',
-    style: 'mapbox://styles/mapbox/streets-v10'
+  container: 'map',
+  style: 'mapbox://styles/mapbox/streets-v10'
+
   });
 
   const markers = JSON.parse(mapElement.dataset.markers);
@@ -41,6 +43,16 @@ if (mapElement) { // only build a map if there's a div#map to inject into
     .setPopup(new mapboxgl.Popup({ offset: 25 }) // add popups
     .setHTML(marker.infoWindow.content))
     .addTo(map);
-  })
+  });
+  addressInput = document.getElementById('teacher_address');
+
+  if (addressInput) {
+    const places = require('places.js');
+    const placesAutocomplete = places({
+      container: addressInput
+    });
+  }
 }
+
+
 

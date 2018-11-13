@@ -3,3 +3,18 @@
 // @import "dashboard";
 // @import "profile";
 // @import "map";
+
+.flex-container {
+  display: flex;
+}
+
+.teacher {
+  flex: 1 0 50%;
+}
+
+#map {
+  flex: 1 0 50%;
+  width: 80%;
+  position: sticky!important;
+  top: 0;
+}
