@@ -18,7 +18,7 @@ puts "Generating users..."
 
 
 20.times do
-  user = User.new(email: Faker::Internet.email, password: Faker::Internet.password(6), first_name: Faker::GreekPhilosophers.name, last_name: Faker::Name.last_name)
+  user = User.new(email: Faker::Internet.email, password: Faker::Internet.password(6), first_name: Faker::GreekPhilosophers.name, last_name: Faker::Name.last_name, photo: 'https://res.cloudinary.com/dftybtoej/image/upload/v1542027237/stock_photo.jpg')
   user.save!
 end
 
@@ -66,16 +66,16 @@ puts "Teacher skills generated"
 puts "Finished seeding database"
 
 puts "Create test users"
-j = User.new(email: "j@j.j", password: "jjjjjj", first_name: "Jethro", last_name: "Williams")
+j = User.new(email: "j@j.j", password: "jjjjjj", first_name: "Jethro", last_name: "Williams", photo: 'https://res.cloudinary.com/dftybtoej/image/upload/v1542027237/stock_photo.jpg')
 j.save!
 
-w = User.new(email: "w@w.w", password: "wwwwww", first_name: "William", last_name: "Something")
+w = User.new(email: "w@w.w", password: "wwwwww", first_name: "William", last_name: "Something", photo: 'https://res.cloudinary.com/dftybtoej/image/upload/v1542027737/william.jpg')
 w.save!
 
-o = User.new(email: "o@o.o", password: "oooooo", first_name: "Owain", last_name: "Unknown")
+o = User.new(email: "o@o.o", password: "oooooo", first_name: "Owain", last_name: "Unknown", photo: 'https://res.cloudinary.com/dftybtoej/image/upload/v1542027738/owain.jpg')
 o.save!
 
-h = User.new(email: "h@h.h", password: "hhhhhh", first_name: "Hilmar", last_name: "Onyx")
+h = User.new(email: "h@h.h", password: "hhhhhh", first_name: "Hilmar", last_name: "Onyx", photo: 'https://res.cloudinary.com/dftybtoej/image/upload/v1542027237/stock_photo.jpg')
 h.save!
 
 Teacher.new(user_id: j.id, hourly_price: Faker::Number.number(3), available_from: Date.today, available_to: (Date.today + rand(100))).save!

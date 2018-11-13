@@ -14,6 +14,17 @@
   </div>
 </div>
 
+    <!-- List showing all Skills -->
+        <div class="search_buttons">
+        <h1>Filter by skills</h1>
+
+        <a class="btn btn-primary btn-lg" href=" <%= teachers_path %>?query=ruby">Ruby</a>
+        <a class="btn btn-primary btn-lg"  href=" <%= teachers_path %>?query=javascript">JavaScript</a>
+        <a class="btn btn-primary btn-lg"  href=" <%= teachers_path %>?query=python">Python</a>
+        <a class="btn btn-primary btn-lg"  href=" <%= teachers_path %>?query=c">C</a>
+        <a class="btn btn-primary btn-lg"  href=" <%= teachers_path %>?query=swift">Swift</a>
+        </div>
+    <!-- End of list showing all Skills -->
 
 <div class="wrapper">
   <div class="container">
@@ -32,28 +43,20 @@
           </div>
           <div class="card-description">
             <h2>
-              <%= ['Innou Ridder', 'Ridder Inou', 'Ridder Rinou', 'Uonni Reddir'].sample  %>
+              <%= teacher.full_name %>
             </h2>
           </div>
-          <img class="avatar" src="https://avatars2.githubusercontent.com/u/22443485?s=460&v=4">
+          <% if teacher.user.photo != nil %>
+          <%= image_tag teacher.user.photo, class: 'avatar' %>
+          <% else %>
+          <%= image_tag 'https://res.cloudinary.com/dftybtoej/image/upload/v1542030994/empty_profile.jpg', class: 'avatar' %>
+          <% end %>
           <a class="card-link" href="<%= teacher_path(teacher) %>" ></a>
         </div>
       </div>
       <% end %>
     </div>
 
-    <!-- List showing all Skills -->
-        <div class="search_buttons">
-        <h1>Filter by skills</h1>
-
-        <a class="btn btn-primary btn-lg" href=" <%= teachers_path %>?query=ruby">Ruby</a>
-        <a class="btn btn-primary btn-lg"  href=" <%= teachers_path %>?query=javascript">JavaScript</a>
-        <a class="btn btn-primary btn-lg"  href=" <%= teachers_path %>?query=python">Python</a>
-        <a class="btn btn-primary btn-lg"  href=" <%= teachers_path %>?query=c">C</a>
-        <a class="btn btn-primary btn-lg"  href=" <%= teachers_path %>?query=swift">Swift</a>
-        </div>
-
-    <!-- End of list showing all Skills -->
 
 
   </div>

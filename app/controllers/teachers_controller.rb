@@ -1,5 +1,5 @@
 class TeachersController < ApplicationController
-  before_action :set_teacher, only: [:show, :update, :edit]
+  before_action :set_teacher, only: [:show, :update, :edit, :destroy]
   skip_before_action :authenticate_user!, only: [:index, :show]
 
   # works
@@ -53,6 +53,12 @@ class TeachersController < ApplicationController
     else
       render :edit
     end
+  end
+
+  def destroy
+    authorize @teacher
+    @teacher.destroy
+    redirect_to teachers_path
   end
 end
 
