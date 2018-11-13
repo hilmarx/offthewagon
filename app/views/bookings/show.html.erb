@@ -1,4 +1,47 @@
 <h1>Bookings#show</h1>
+
+
+
+  <div class="product">
+
+    <img src="https://avatars2.githubusercontent.com/u/22443485?s=460&v=4" alt="kudoz" class="avatar-large">
+
+    <div class='product-body'>
+      <h3>Teacher:</h3>
+      <p><%= @booking.teacher.full_name %></p>
+    </div>
+
+    <div class='product-body'>
+      <h3>Date:</h3>
+      <p><%= @booking.end_time.strftime("%d-%b-%Y") %></p>
+    </div>
+
+    <div class='product-body'>
+      <h3>Start time:</h3>
+      <p><%= @booking.start_time.strftime("%H:%M") %></p>
+    </div>
+
+    <div class='product-body'>
+      <h3>End time:</h3>
+      <p><%= @booking.end_time.strftime("%H:%M") %></p>
+    </div>
+
+    <div class='product-body'>
+      <h3>Status:</h3>
+      <p><%= @booking.status %></p>
+    </div>
+
+        <div class='product-body'>
+      <h3>Price:</h3>
+      <p><%= ((@booking.end_time - @booking.start_time) / 3600) * @booking.teacher.hourly_price %></p>
+    </div>
+  </div>
+
+
+
+
+<p><%= @booking.teacher %></p>
+<p> <%= @booking.start_time.strftime("%H:%M") %></p>
 <!--<p><%= @booking.teacher %></p>-->
 <p> <%= @booking.start_time %></p>
 <p> <%= @booking.end_time %></p>
