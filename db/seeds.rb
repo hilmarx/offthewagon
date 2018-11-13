@@ -37,7 +37,7 @@ puts "Generating teachers..."
 counter = User.first.id
 
 20.times do
-  teach = Teacher.new(user_id: counter, hourly_price: Faker::Number.number(3), available_from: Date.today, available_to: (Date.today + rand(100)), address: Faker::Address.full_address, photo: "https://randomuser.me/api/portraits/men/#{counter}.jpg")
+  teach = Teacher.new(user_id: counter, hourly_price: Faker::Number.number(3), available_from: Date.today, available_to: (Date.today + rand(100)), address: Faker::Address.full_address)
   teach.save!
   counter += 1
 
@@ -75,16 +75,16 @@ w.save!
 o = User.new(email: "o@o.o", password: "oooooo", first_name: "Owain", last_name: "Unknown", photo: 'https://res.cloudinary.com/dftybtoej/image/upload/v1542027738/owain.jpg')
 o.save!
 
-h = User.new(email: "h@h.h", password: "hhhhhh", first_name: "Hilmar", last_name: "Onyx", photo: 'https://miro.medium.com/max/2400/1*NVVp-VvpsrlSVd-hHB7DZw.png')
+h = User.new(email: "h@h.h", password: "hhhhhh", first_name: "Hilmar", last_name: "Onyx", photo: 'https://res.cloudinary.com/dftybtoej/image/upload/v1542027237/stock_photo.jpg')
 h.save!
 
-Teacher.new(user_id: j.id, hourly_price: Faker::Number.number(3), available_from: Date.today, available_to: (Date.today + rand(100)), address: 'Seminyak, Bali', teacher_skill: TeacherSkill.create(name: Skill.all.sample.name, level: level_array.sample, skill: Skill.all.sample)).save!
+Teacher.new(user_id: j.id, hourly_price: Faker::Number.number(3), available_from: Date.today, available_to: (Date.today + rand(100)), address: 'Seminyak, Bali').save!
 
-Teacher.new(user_id: w.id, hourly_price: Faker::Number.number(3), available_from: Date.today, available_to: (Date.today + rand(100)), address: 'Deus, Canggu, Bali', teacher_skill: TeacherSkill.create(name: Skill.all.sample.name, level: level_array.sample, skill: Skill.all.sample)).save!
+Teacher.new(user_id: w.id, hourly_price: Faker::Number.number(3), available_from: Date.today, available_to: (Date.today + rand(100)), address: 'Deus, Canggu, Bali').save!
 
-Teacher.new(user_id: o.id, hourly_price: Faker::Number.number(3), available_from: Date.today, available_to: (Date.today + rand(100)), address: 'Frii Hotel, Canggu, Bali', teacher_skill: TeacherSkill.create(name: Skill.all.sample.name, level: level_array.sample, skill: Skill.all.sample)).save!
+Teacher.new(user_id: o.id, hourly_price: Faker::Number.number(3), available_from: Date.today, available_to: (Date.today + rand(100)), address: 'Frii Hotel, Canggu, Bali').save!
 
-Teacher.new(user_id: h.id, hourly_price: Faker::Number.number(3), available_from: Date.today, available_to: (Date.today + rand(100)), address: "Canngu, Bali", teacher_skill: TeacherSkill.create(name: Skill.all.sample.name, level: level_array.sample, skill: Skill.all.sample)).save!
+Teacher.new(user_id: h.id, hourly_price: Faker::Number.number(3), available_from: Date.today, available_to: (Date.today + rand(100)), address: "Canngu, Bali").save!
 
 puts "Create Bookings for test users"
 
@@ -106,4 +106,3 @@ Booking.new(user_id: h.id, teacher_id: w.id, status: "pending").save!
 
 admin = User.new(email: 'admin@admin.admin', password: 'password', first_name: 'admin', last_name: 'admin', admin: true)
 admin.save
-
