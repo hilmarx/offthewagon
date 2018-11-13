@@ -10,6 +10,10 @@ class BookingPolicy < ApplicationPolicy
     is_teacher?
   end
 
+  def new?
+    true
+  end
+
   def cancel?
     a = is_teacher?
     b = is_owner_or_admin?
@@ -25,7 +29,7 @@ class BookingPolicy < ApplicationPolicy
   end
 
   def destroy?
-    is_admin?
+    is_owner_or_admin?
   end
 
   class Scope < Scope
@@ -34,6 +38,7 @@ class BookingPolicy < ApplicationPolicy
     end
   end
 
+  private
 
   def is_owner_or_admin?
     record.user == user || user.admin
@@ -46,4 +51,5 @@ class BookingPolicy < ApplicationPolicy
   def is_admin?
     user.admin
   end
+
 end

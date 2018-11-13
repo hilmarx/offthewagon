@@ -31,12 +31,17 @@ class TeacherSkillsController < ApplicationController
     @teacher = Teacher.find(params[:teacher_id])
     authorize @teacher
     @teacher_skill.teacher = @teacher
+
     if @teacher_skill.save
-      redirect_to teacher_path(@teacher)
+      redirect_to teacher_path(@teacher), notice: 'Skill succesfully created'
     else
-      render :new
+      @teacher_skills = TeacherSkill.where(teacher_id: @teacher.id)
+      @new_skill = @teacher_skill
+      puts "Skill could not be created"
+      render "teachers/show" ### render teacher's new
     end
   end
+
 
 
   def destroy

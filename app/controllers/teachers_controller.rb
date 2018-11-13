@@ -23,11 +23,29 @@ class TeachersController < ApplicationController
 
   # works
   def index
-    @teachers = Teacher.all
+    # Geo coding start
+    if params[:location].present?
+      @teachers = Teacher.near(params[:location], 60)
+    else
+      @teachers = Teacher.all
+    end
+
+    if params[:query].present?
+      @teachers = @teachers.pg_search(params[:query])
+    end
+
+    @markers = @teachers.map do |teacher|
+      {
+        lng: teacher.longitude,
+        lat: teacher.latitude,
+        infoWindow: { content: render_to_string(partial: "/teachers/map_window", locals: { teacher: teacher }) }
+      }
+    end
+    # Geo coding end
     @teacher_skills = TeacherSkill.all
-    @selected_teachers = []
-    @teachers = policy_scope(Teacher)
+    policy_scope(Teacher)
   end
+
 
   # works
   def show
@@ -70,5 +88,5 @@ end
 
 def teacher_params
   # If any errors are encountered, it might be due to ':id' below
-  params.require(:teacher).permit(:user_id, :average_rating, :hourly_price, :available_from, :available_to)
+  params.require(:teacher).permit(:user_id, :average_rating, :hourly_price, :available_from, :available_to, :photo)
 end

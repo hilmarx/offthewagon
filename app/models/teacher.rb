@@ -1,10 +1,14 @@
 class Teacher < ApplicationRecord
+  geocoded_by :address
+  after_validation :geocode, if: :will_save_change_to_address?
   before_save :full_name
   belongs_to :user
   has_many :teacher_skills, dependent: :destroy
   has_many :skills, through: :teacher_skills
   has_many :bookings, dependent: :destroy
   validates :user_id, uniqueness: true
+
+  mount_uploader :photo, PhotoUploader
 
   # Pg Search Start
   # Search by Teacher.user name and skill category
@@ -18,6 +22,7 @@ class Teacher < ApplicationRecord
       tsearch: { prefix: true } # <-- now `superman batm` will return something!
     }
   # Pg Search End
+
 
   def top_skill
     self.teacher_skills.order(level: :desc).first
