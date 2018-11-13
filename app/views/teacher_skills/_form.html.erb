@@ -1,5 +1,5 @@
 <%= simple_form_for [@teacher, @new_skill] do |f| %>
   <%= f.association :skill, as: :select %>
-  <%= f.input :level %>
-  <%= f.submit %>
+  <%= f.input :level, label: 'Level (1-5)' %>
+  <%= f.button :submit, class: 'btn btn-primary' %>
 <% end %>
